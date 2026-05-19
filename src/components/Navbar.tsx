@@ -125,14 +125,22 @@ export default function Navbar() {
                     fontWeight: 400,
                     color: textColor,
                     textDecoration: "none",
-                    padding: "8px 18px",
+                    padding: "6px 14px",
+                    margin: "0 2px",
                     display: "block",
                     whiteSpace: "nowrap",
                     lineHeight: 1.5,
-                    transition: "color 0.2s",
+                    borderRadius: 6,
+                    transition: "color 0.2s, background-color 0.2s",
                   }}
-                  onMouseEnter={(e) => (e.currentTarget.style.color = hoverColor)}
-                  onMouseLeave={(e) => (e.currentTarget.style.color = textColor)}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.color = "var(--accent)";
+                    e.currentTarget.style.backgroundColor = isOverHero ? "rgba(255,255,255,0.06)" : "rgba(226,101,46,0.06)";
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.color = textColor;
+                    e.currentTarget.style.backgroundColor = "transparent";
+                  }}
                 >
                   {link.label}
                 </Link>
