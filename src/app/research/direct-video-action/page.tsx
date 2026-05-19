@@ -44,7 +44,7 @@ const tocItems = [
 /* ------------------------------------------------------------------ */
 /*  Vimeo helper                                                      */
 /* ------------------------------------------------------------------ */
-function LazyVimeo({ id, hash, title, small = false }: { id: string; hash: string; title?: string; small?: boolean }) {
+function LazyVimeo({ id, hash, title, small = false, background = false }: { id: string; hash: string; title?: string; small?: boolean; background?: boolean }) {
   const ref = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
   const [loaded, setLoaded] = useState(false);
@@ -72,7 +72,7 @@ function LazyVimeo({ id, hash, title, small = false }: { id: string; hash: strin
       )}
       {visible && (
         <iframe
-          src={`https://player.vimeo.com/video/${id}?h=${hash}&title=0&byline=0&portrait=0&vimeo_logo=0&dnt=1`}
+          src={`https://player.vimeo.com/video/${id}?h=${hash}&title=0&byline=0&portrait=0&vimeo_logo=0&dnt=1${background ? "&background=1" : ""}`}
           className="w-full h-full relative"
           style={{ zIndex: 1 }}
           allow="autoplay; fullscreen; picture-in-picture"
@@ -264,7 +264,7 @@ export default function DirectVideoActionPage() {
       {/* ── Hero Video ─────────────────────────────────────────── */}
       <div className="max-w-[1020px] mx-auto px-6 pb-12">
         <div className="rounded-xl border border-[var(--border)] overflow-hidden">
-          <VimeoEmbed id="1176040320" hash="6ca3ecdbd9" title="Hero video" />
+          <LazyVimeo id="1176040320" hash="6ca3ecdbd9" title="Hero video" background />
         </div>
       </div>
 

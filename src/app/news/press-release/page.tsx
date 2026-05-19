@@ -1,7 +1,10 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import FadeIn from "@/components/FadeIn";
 
 export default function PressReleasePage() {
   return (
@@ -11,34 +14,41 @@ export default function PressReleasePage() {
       <main className="flex-1 bg-[var(--bg)]">
         {/* Top Section */}
         <section className="text-center px-6 pt-[160px]">
-          <p
-            className="uppercase mb-4"
-            style={{ fontSize: 14, letterSpacing: 2, color: "#6B6B74" }}
-          >
-            PRESS RELEASE &middot; MARCH 10, 2026
-          </p>
+          <FadeIn>
+            <p
+              className="uppercase mb-4"
+              style={{ fontSize: 14, letterSpacing: 2, color: "var(--text-muted)" }}
+            >
+              PRESS RELEASE &middot; MARCH 10, 2026
+            </p>
+          </FadeIn>
 
-          <h1
-            className="font-bold max-w-[800px] mx-auto mb-6 text-[var(--text)]"
-            style={{ fontSize: "clamp(1.9rem, 3.5vw, 3.2rem)" }}
-          >
-            Rhoda AI Exits Stealth with $450 Million Series A to Bring Robots Out
-            of the Lab and Into the Real World
-          </h1>
+          <FadeIn delay={1}>
+            <h1
+              className="font-bold max-w-[800px] mx-auto mb-6 text-[var(--text)]"
+              style={{ fontSize: "clamp(1.9rem, 3.5vw, 3.2rem)" }}
+            >
+              Rhoda AI Exits Stealth with $450 Million Series A to Bring Robots Out
+              of the Lab and Into the Real World
+            </h1>
+          </FadeIn>
 
-          <Link
-            href="/news"
-            className="inline-block transition-colors text-[var(--text-muted)] hover:text-[var(--text)]"
-            style={{ fontSize: 18 }}
-          >
-            &larr; Back to News
-          </Link>
+          <FadeIn delay={2}>
+            <Link
+              href="/news"
+              className="inline-block transition-colors text-[var(--text-muted)] hover:text-[var(--text)]"
+              style={{ fontSize: 18 }}
+            >
+              &larr; Back to News
+            </Link>
+          </FadeIn>
         </section>
 
         {/* Article */}
         <article className="max-w-[800px] mx-auto w-full px-6 py-16">
           {/* Hero Image */}
-          <div className="relative w-full aspect-video rounded-[12px] overflow-hidden mb-12">
+          <FadeIn>
+            <div className="relative w-full aspect-video rounded-[12px] overflow-hidden mb-12">
             <Image
               src="/assets/images/home/robot-decant.webp"
               alt="Rhoda AI robot performing a task"

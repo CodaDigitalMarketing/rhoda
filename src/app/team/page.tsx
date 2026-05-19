@@ -139,7 +139,7 @@ export default function TeamPage() {
       <Navbar />
 
       {/* Hero - Team photo background */}
-      <div style={{ position: "relative", minHeight: "70vh", display: "flex", alignItems: "center", justifyContent: "center", overflow: "hidden" }}>
+      <div style={{ position: "relative", minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center", overflow: "hidden" }}>
         <Image
           src="/assets/images/team/rhoda-ai-team.webp"
           alt="Rhoda AI team"
@@ -148,18 +148,23 @@ export default function TeamPage() {
           priority
           style={{ zIndex: 0 }}
         />
-        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0.7) 50%, rgba(0,0,0,0.85) 100%)", zIndex: 1 }} />
+        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, rgba(0,0,0,0.72) 0%, rgba(0,0,0,0.58) 50%, rgba(0,0,0,0.75) 100%)", zIndex: 1 }} />
         <div className="text-center" style={{ position: "relative", zIndex: 2, paddingTop: 160, paddingBottom: 80 }}>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white">
-            Engineering Intelligence
-          </h1>
-          <p
-            className="mt-4 max-w-[600px] mx-auto"
-            style={{ fontSize: 18, lineHeight: "28px", color: "rgba(255,255,255,0.6)" }}
-          >
-            A world-class team of researchers and engineers building the future of
-            robotic intelligence.
-          </p>
+          <FadeIn>
+            <div style={{ width: 40, height: 3, backgroundColor: "#E2652E", borderRadius: 2, margin: "0 auto 28px" }} />
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white">
+              Engineering Intelligence
+            </h1>
+          </FadeIn>
+          <FadeIn delay={1}>
+            <p
+              className="mt-4 max-w-[600px] mx-auto"
+              style={{ fontSize: 18, lineHeight: "28px", color: "rgba(255,255,255,0.6)" }}
+            >
+              A world-class team of researchers and engineers building the future of
+              robotic intelligence.
+            </p>
+          </FadeIn>
         </div>
       </div>
 
@@ -194,15 +199,19 @@ export default function TeamPage() {
         {/* Our Team */}
         <div className="rhoda-container px-6 pt-8 pb-24">
           <div className="border-t border-[var(--border)] pt-12">
-            <h3 className="text-3xl md:text-4xl font-bold text-center text-[var(--text)] mb-8">
-              Our Team
-            </h3>
-            <p
-              className="text-center text-[var(--text-muted)]"
-              style={{ fontSize: 18, lineHeight: "28px" }}
-            >
-              {TEAM_NAMES}
-            </p>
+            <FadeIn>
+              <h3 className="text-3xl md:text-4xl font-bold text-center text-[var(--text)] mb-8">
+                Our Team
+              </h3>
+            </FadeIn>
+            <FadeIn delay={1}>
+              <p
+                className="text-center text-[var(--text-muted)]"
+                style={{ fontSize: 18, lineHeight: "28px" }}
+              >
+                {TEAM_NAMES}
+              </p>
+            </FadeIn>
           </div>
         </div>
       </div>

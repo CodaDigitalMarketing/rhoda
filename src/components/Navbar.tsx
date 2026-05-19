@@ -43,7 +43,7 @@ export default function Navbar() {
   useEffect(() => { setMobileOpen(false); }, [pathname]);
 
   // Only the homepage has the dark video hero
-  const hasDarkHero = pathname === "/";
+  const hasDarkHero = pathname === "/" || pathname === "/team";
   const isOverHero = hasDarkHero && !scrolled;
 
   // Colors based on whether we're over the hero or not
