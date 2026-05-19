@@ -15,7 +15,7 @@ export default function CareersPage() {
       {/* Hero - Dark Section */}
       <div className="bg-[#0C0C0F]">
         <div className="text-center pt-[180px] pb-[80px]">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold" style={{ color: "#E2652E" }}>
             Build with us
           </h1>
         </div>
