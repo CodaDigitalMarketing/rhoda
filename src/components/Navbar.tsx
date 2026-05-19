@@ -11,7 +11,6 @@ const NAV_LINKS = [
   { href: "/news", label: "News" },
   { href: "/team", label: "Team" },
   { href: "/careers", label: "Careers" },
-  { href: "/contact", label: "Contact" },
 ];
 
 export default function Navbar() {
@@ -41,25 +40,26 @@ export default function Navbar() {
     <nav
       style={{
         position: "fixed",
-        top: hidden ? "-151px" : "12px",
+        top: hidden ? "-180px" : "12px",
         left: 0,
         right: 0,
         zIndex: 1030,
-        padding: "0 12px",
+        padding: "0 16px",
         transition: "top 0.5s",
         fontFamily: '"Space Grotesk", system-ui, sans-serif',
       }}
     >
       <div
         style={{
-          maxWidth: 720,
+          maxWidth: 820,
           margin: "0 auto",
-          padding: "10px 20px",
-          borderRadius: 12,
-          backgroundColor: "rgba(255, 255, 255, 0.85)",
-          backdropFilter: "blur(44px)",
-          WebkitBackdropFilter: "blur(44px)",
-          border: "1px solid rgba(0, 0, 0, 0.06)",
+          padding: "14px 28px",
+          borderRadius: 14,
+          backgroundColor: "rgba(255, 255, 255, 0.95)",
+          backdropFilter: "blur(20px)",
+          WebkitBackdropFilter: "blur(20px)",
+          border: "1px solid rgba(0, 0, 0, 0.08)",
+          boxShadow: "0 2px 16px rgba(0, 0, 0, 0.06)",
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
@@ -85,14 +85,14 @@ export default function Navbar() {
             display: "none",
             background: "none",
             border: "1px solid rgba(0, 0, 0, 0.1)",
-            borderRadius: 4,
-            padding: "4px 8px",
+            borderRadius: 6,
+            padding: "6px 10px",
             cursor: "pointer",
             flexDirection: "column",
             justifyContent: "center",
             alignItems: "center",
-            width: 40,
-            height: 34,
+            width: 44,
+            height: 38,
             gap: 5,
           }}
           className="navbar-toggler-btn"
@@ -102,54 +102,98 @@ export default function Navbar() {
           <span style={{ display: "block", width: 22, height: 2, backgroundColor: "#1A1A1F", borderRadius: 1, transition: "transform 0.2s", transform: mobileOpen ? "rotate(-45deg) translate(2.5px,-2.5px)" : "none" }} />
         </button>
 
-        {/* Desktop nav links */}
-        <ul className="navbar-desktop-links" style={{ display: "flex", alignItems: "center", listStyle: "none", margin: 0, padding: 0 }}>
-          {NAV_LINKS.map((link, i) => (
-            <li key={link.href}>
-              <Link
-                href={link.href}
-                style={{
-                  fontSize: 14,
-                  color: "#1A1A1F",
-                  textDecoration: "none",
-                  padding: "8px 16px",
-                  display: "block",
-                  whiteSpace: "nowrap",
-                  borderRight: i < NAV_LINKS.length - 1 ? "1px solid rgba(0, 0, 0, 0.1)" : "none",
-                  lineHeight: 1.5,
-                  transition: "opacity 0.2s",
-                }}
-                onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.7")}
-                onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
-              >
-                {link.label}
-              </Link>
-            </li>
-          ))}
-        </ul>
-
-        {/* Mobile menu */}
-        {mobileOpen && (
-          <ul className="navbar-mobile-links" style={{ width: "100%", listStyle: "none", margin: 0, padding: "12px 0 4px", borderTop: "1px solid rgba(0, 0, 0, 0.1)", marginTop: 12 }}>
+        {/* Desktop nav links + CTA */}
+        <div className="navbar-desktop-links" style={{ display: "flex", alignItems: "center", gap: 0 }}>
+          <ul style={{ display: "flex", alignItems: "center", listStyle: "none", margin: 0, padding: 0 }}>
             {NAV_LINKS.map((link) => (
               <li key={link.href}>
                 <Link
                   href={link.href}
                   style={{
                     fontSize: 14,
+                    fontWeight: 400,
                     color: "#1A1A1F",
                     textDecoration: "none",
-                    padding: "8px 0",
+                    padding: "8px 18px",
                     display: "block",
-                    transition: "opacity 0.2s",
+                    whiteSpace: "nowrap",
+                    lineHeight: 1.5,
+                    transition: "color 0.2s",
                   }}
-                  onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.7")}
-                  onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
+                  onMouseEnter={(e) => (e.currentTarget.style.color = "#E2652E")}
+                  onMouseLeave={(e) => (e.currentTarget.style.color = "#1A1A1F")}
                 >
                   {link.label}
                 </Link>
               </li>
             ))}
+          </ul>
+
+          {/* Contact as orange CTA */}
+          <Link
+            href="/contact"
+            style={{
+              fontSize: 14,
+              fontWeight: 500,
+              color: "white",
+              textDecoration: "none",
+              padding: "8px 20px",
+              display: "block",
+              whiteSpace: "nowrap",
+              lineHeight: 1.5,
+              backgroundColor: "#E2652E",
+              borderRadius: 6,
+              marginLeft: 12,
+              transition: "background-color 0.2s",
+            }}
+            onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "#F07A45")}
+            onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "#E2652E")}
+          >
+            Contact
+          </Link>
+        </div>
+
+        {/* Mobile menu */}
+        {mobileOpen && (
+          <ul className="navbar-mobile-links" style={{ width: "100%", listStyle: "none", margin: 0, padding: "12px 0 4px", borderTop: "1px solid rgba(0, 0, 0, 0.08)", marginTop: 14 }}>
+            {NAV_LINKS.map((link) => (
+              <li key={link.href}>
+                <Link
+                  href={link.href}
+                  style={{
+                    fontSize: 15,
+                    color: "#1A1A1F",
+                    textDecoration: "none",
+                    padding: "10px 0",
+                    display: "block",
+                    transition: "color 0.2s",
+                  }}
+                  onMouseEnter={(e) => (e.currentTarget.style.color = "#E2652E")}
+                  onMouseLeave={(e) => (e.currentTarget.style.color = "#1A1A1F")}
+                >
+                  {link.label}
+                </Link>
+              </li>
+            ))}
+            <li>
+              <Link
+                href="/contact"
+                style={{
+                  fontSize: 15,
+                  fontWeight: 500,
+                  color: "white",
+                  textDecoration: "none",
+                  padding: "10px 20px",
+                  display: "inline-block",
+                  backgroundColor: "#E2652E",
+                  borderRadius: 6,
+                  marginTop: 8,
+                  marginBottom: 4,
+                }}
+              >
+                Contact
+              </Link>
+            </li>
           </ul>
         )}
       </div>

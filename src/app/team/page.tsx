@@ -75,7 +75,10 @@ function LeadershipCard({
   };
 }) {
   return (
-    <div className="flex flex-col items-center bg-[#FFFFFF] border border-[#E2E2E6] rounded-[12px] p-6">
+    <div
+      className="flex flex-col items-center bg-[#FFFFFF] rounded-[12px] p-6 transition-all duration-300 hover:shadow-lg"
+      style={{ border: "1px solid #E2E2E6", borderTop: "3px solid #E2652E" }}
+    >
       <div className="rounded-full overflow-hidden mb-4 bg-[#FAFAFA]">
         <Image
           src={person.photo}
@@ -102,7 +105,7 @@ function LeadershipCard({
           </span>
         ))}
       </p>
-      <div className="w-full mt-4 pt-3 border-t border-[#E2E2E6] flex justify-center gap-4">
+      <div className="w-full mt-4 pt-3 border-t border-[#E2652E]/50 flex justify-center gap-4">
         <a
           href={person.linkedin}
           target="_blank"
