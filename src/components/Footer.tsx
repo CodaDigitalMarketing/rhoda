@@ -14,10 +14,9 @@ const NAV_LINKS = [
 
 export default function Footer() {
   return (
-    <footer style={{ padding: "0 16px 16px" }}>
+    <footer>
       <div
         style={{
-          borderRadius: 12,
           backgroundColor: "var(--footer-bg)",
           color: "var(--footer-text)",
         }}

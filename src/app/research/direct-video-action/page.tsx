@@ -264,15 +264,7 @@ export default function DirectVideoActionPage() {
       {/* ── Hero Video ─────────────────────────────────────────── */}
       <div className="max-w-[1020px] mx-auto px-6 pb-12">
         <div className="rounded-xl border border-[var(--border)] overflow-hidden">
-          <div className="aspect-video w-full">
-            <iframe
-              src="https://player.vimeo.com/video/1176040320?h=6ca3ecdbd9&title=0&byline=0&portrait=0&vimeo_logo=0&dnt=1&background=1"
-              className="w-full h-full"
-              allow="autoplay; fullscreen; picture-in-picture"
-              allowFullScreen
-              title="Hero video"
-            />
-          </div>
+          <VimeoEmbed id="1176040320" hash="6ca3ecdbd9" title="Hero video" />
         </div>
       </div>
 
