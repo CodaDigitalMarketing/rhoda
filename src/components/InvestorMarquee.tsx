@@ -9,7 +9,7 @@ export default function InvestorMarquee({ investors }: { investors: string[] }) 
         style={{
           display: "flex",
           alignItems: "center",
-          gap: 24,
+          gap: 40,
           animation: "scroll-left 40s linear infinite",
           width: "max-content",
         }}
@@ -19,19 +19,17 @@ export default function InvestorMarquee({ investors }: { investors: string[] }) 
             key={`${name}-${i}`}
             style={{
               flexShrink: 0,
-              borderRadius: 8,
-              overflow: "hidden",
-              opacity: 0.85,
+              opacity: 0.65,
               transition: "opacity 0.2s ease",
             }}
             onMouseEnter={(e) => { e.currentTarget.style.opacity = "1"; }}
-            onMouseLeave={(e) => { e.currentTarget.style.opacity = "0.85"; }}
+            onMouseLeave={(e) => { e.currentTarget.style.opacity = "0.65"; }}
           >
             <img
-              src={`/assets/images/investors/${name}.jpg`}
+              src={`/assets/images/investors/${name}.png`}
               alt={name}
               style={{
-                height: 52,
+                height: 40,
                 width: "auto",
                 display: "block",
               }}

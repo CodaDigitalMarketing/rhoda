@@ -454,7 +454,7 @@ export default function Home() {
         </section>
 
         {/* ── Robot Platform ── */}
-        <FadeIn style={{ margin: "0 8px", borderRadius: 12, overflow: "hidden" }}>
+        <FadeIn style={{ overflow: "hidden" }}>
           <div
             style={{
               height: "80vh",
@@ -462,7 +462,6 @@ export default function Home() {
               backgroundRepeat: "no-repeat",
               backgroundPosition: "center center",
               backgroundSize: "cover",
-              borderRadius: 12,
             }}
           >
             <div className="rhoda-container h-full flex items-start pt-16">
@@ -492,15 +491,17 @@ export default function Home() {
         </FadeIn>
 
         {/* ── Investors ── */}
-        <section style={{ backgroundColor: "#ECECEC", paddingTop: 80, paddingBottom: 64, marginTop: 48 }}>
-          <FadeIn className="text-center">
-            <h3 style={{ color: "#1A1A1F" }}>Our Investors</h3>
-          </FadeIn>
-          <div className="mt-12 overflow-hidden">
-            <InvestorMarquee investors={INVESTORS} />
-          </div>
-        </section>
       </main>
+
+      {/* ── Investors ── */}
+      <section style={{ paddingTop: 80, paddingBottom: 64, marginTop: 48 }}>
+        <FadeIn className="text-center">
+          <h3 style={{ color: "#1A1A1F" }}>Our Investors</h3>
+        </FadeIn>
+        <div className="mt-12 overflow-hidden">
+          <InvestorMarquee investors={INVESTORS} />
+        </div>
+      </section>
 
       <Footer />
     </>
