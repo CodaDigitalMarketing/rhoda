@@ -47,10 +47,10 @@ export default function Navbar() {
   const isOverHero = hasDarkHero && !scrolled;
 
   // Colors based on whether we're over the hero or not
-  const textColor = isOverHero ? "#FFFFFF" : "#1A1A1F";
-  const mutedColor = isOverHero ? "rgba(255,255,255,0.15)" : "rgba(0,0,0,0.1)";
-  const hamburgerColor = isOverHero ? "#FFFFFF" : "#1A1A1F";
-  const hoverColor = "#E2652E";
+  const textColor = isOverHero ? "var(--nav-hero-text)" : "var(--nav-text)";
+  const mutedColor = isOverHero ? "rgba(255,255,255,0.15)" : "var(--nav-border)";
+  const hamburgerColor = isOverHero ? "var(--nav-hero-text)" : "var(--nav-text)";
+  const hoverColor = "var(--accent)";
 
   return (
     <nav
@@ -71,11 +71,11 @@ export default function Navbar() {
           margin: "0 auto",
           padding: "14px 28px",
           borderRadius: 14,
-          backgroundColor: isOverHero ? "rgba(255, 255, 255, 0.08)" : "rgba(255, 255, 255, 0.95)",
+          backgroundColor: isOverHero ? "var(--nav-hero-bg)" : "var(--nav-bg)",
           backdropFilter: "blur(20px)",
           WebkitBackdropFilter: "blur(20px)",
-          border: isOverHero ? "1px solid rgba(255, 255, 255, 0.12)" : "1px solid rgba(0, 0, 0, 0.08)",
-          boxShadow: isOverHero ? "none" : "0 2px 16px rgba(0, 0, 0, 0.06)",
+          border: isOverHero ? `1px solid var(--nav-hero-border)` : `1px solid var(--nav-border)`,
+          boxShadow: isOverHero ? "none" : "var(--nav-shadow)",
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
@@ -85,7 +85,7 @@ export default function Navbar() {
       >
         {/* Logo */}
         <Link href="/" style={{ flexShrink: 0, lineHeight: 0 }}>
-          <RhodaLogo textColor={isOverHero ? "#FFFFFF" : "#231f20"} />
+          <RhodaLogo textColor={isOverHero ? "#FFFFFF" : "var(--text)"} />
         </Link>
 
         {/* Mobile hamburger */}

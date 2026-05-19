@@ -7,6 +7,7 @@ import Footer from "@/components/Footer";
 import InvestorMarquee from "@/components/InvestorMarquee";
 import FadeIn from "@/components/FadeIn";
 import ImageShowcase from "@/components/ImageShowcase";
+import { useTheme } from "@/components/ThemeProvider";
 
 const INVESTORS = [
   "B37", "Capricorn", "GIGA", "Hyperlink", "JohnDoerr", "Khosla",
@@ -16,6 +17,9 @@ const INVESTORS = [
 ];
 
 export default function Home() {
+  const { theme } = useTheme();
+  const isDark = theme === "dark";
+
   return (
     <>
       <Navbar />
@@ -56,10 +60,24 @@ export default function Home() {
             style={{
               position: "absolute",
               inset: 0,
-              background: "linear-gradient(180deg, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.82) 50%, rgba(0,0,0,0.9) 100%)",
+              background: "linear-gradient(180deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.75) 60%, rgba(0,0,0,0.82) 100%)",
               zIndex: 1,
             }}
           />
+          {/* Bottom fade to page bg — dark mode only */}
+          {isDark && (
+            <div
+              style={{
+                position: "absolute",
+                bottom: 0,
+                left: 0,
+                right: 0,
+                height: 80,
+                background: "linear-gradient(180deg, transparent 0%, var(--bg) 100%)",
+                zIndex: 3,
+              }}
+            />
+          )}
 
           {/* Content */}
           <div
@@ -146,10 +164,10 @@ export default function Home() {
         <section style={{ paddingTop: 96, paddingBottom: 96 }}>
           <div className="rhoda-container">
             <FadeIn className="text-center" style={{ marginBottom: 64 }}>
-              <p style={{ color: "#E2652E", fontSize: 12, fontWeight: 600, letterSpacing: "0.2em", textTransform: "uppercase", marginBottom: 16 }}>
+              <p style={{ color: "var(--accent)", fontSize: 12, fontWeight: 600, letterSpacing: "0.2em", textTransform: "uppercase", marginBottom: 16 }}>
                 WHAT WE BUILD
               </p>
-              <h2 style={{ color: "#1A1A1F" }}>Intelligence in action</h2>
+              <h2 style={{ color: "var(--text)" }}>Intelligence in action</h2>
             </FadeIn>
 
             {/* Three images side by side */}
@@ -160,7 +178,7 @@ export default function Home() {
                 { src: "/assets/images/home/robot-pushing-down-rollers.jpg", alt: "robot pushing box on rollers" },
               ].map((img, i) => (
                 <FadeIn key={img.src} delay={i + 1}>
-                  <div style={{ borderRadius: 12, overflow: "hidden", boxShadow: "0 4px 20px rgba(226, 101, 46, 0.12)" }}>
+                  <div style={{ borderRadius: 12, overflow: "hidden", boxShadow: "var(--image-shadow)" }}>
                     <Image src={img.src} alt={img.alt} width={800} height={600} className="w-full h-auto" style={{ display: "block" }} />
                   </div>
                 </FadeIn>
@@ -169,9 +187,9 @@ export default function Home() {
 
             {/* Divider */}
             <div style={{ display: "flex", alignItems: "center", gap: 20, marginTop: 64, marginBottom: 48 }}>
-              <div style={{ flex: 1, height: 1, backgroundColor: "#E2E2E6" }} />
-              <div style={{ width: 8, height: 8, borderRadius: "50%", backgroundColor: "#E2652E" }} />
-              <div style={{ flex: 1, height: 1, backgroundColor: "#E2E2E6" }} />
+              <div style={{ flex: 1, height: 1, backgroundColor: "var(--border)" }} />
+              <div style={{ width: 8, height: 8, borderRadius: "50%", backgroundColor: "var(--accent)" }} />
+              <div style={{ flex: 1, height: 1, backgroundColor: "var(--border)" }} />
             </div>
 
             {/* YouTube embed */}
@@ -198,10 +216,10 @@ export default function Home() {
 
             {/* Section label */}
             <FadeIn className="text-center" style={{ marginBottom: 48 }}>
-              <p style={{ color: "#E2652E", fontSize: 12, fontWeight: 600, letterSpacing: "0.2em", textTransform: "uppercase", marginBottom: 16 }}>
+              <p style={{ color: "var(--accent)", fontSize: 12, fontWeight: 600, letterSpacing: "0.2em", textTransform: "uppercase", marginBottom: 16 }}>
                 OUR APPROACH
               </p>
-              <h2 style={{ color: "#1A1A1F" }}>A path to physical AGI</h2>
+              <h2 style={{ color: "var(--text)" }}>A path to physical AGI</h2>
             </FadeIn>
 
             {/* Video — full width, elevated with shadow */}
@@ -237,8 +255,8 @@ export default function Home() {
                 }}
               >
                 <div style={{ width: 3, flexShrink: 0, borderRadius: 2, background: "linear-gradient(180deg, #E2652E 0%, #F07A45 100%)" }} />
-                <p style={{ lineHeight: 1.8, color: "#6B6B74", fontSize: 17 }}>
-                  <strong style={{ color: "#1A1A1F" }}>FutureVision</strong>{" "}
+                <p style={{ lineHeight: 1.8, color: "var(--text-muted)", fontSize: 17 }}>
+                  <strong style={{ color: "var(--text)" }}>FutureVision</strong>{" "}
                   brings the capability to handle real world industrial tasks
                   autonomously. This unlocks generalization that conventional
                   VLA pipelines struggle to achieve. We call this the Direct
@@ -254,44 +272,44 @@ export default function Home() {
               <FadeIn delay={1}>
                 <div
                   style={{
-                    background: "#FFFFFF",
+                    background: "var(--surface)",
                     borderRadius: 12,
                     padding: "40px 36px",
-                    border: "1px solid #E2E2E6",
-                    borderTop: "3px solid #E2652E",
-                    boxShadow: "0 4px 20px rgba(226, 101, 46, 0.08)",
+                    border: "1px solid var(--border)",
+                    borderTop: "3px solid var(--accent)",
+                    boxShadow: "var(--image-shadow)",
                   }}
                 >
-                  <p style={{ fontSize: 11, fontWeight: 600, letterSpacing: "0.15em", textTransform: "uppercase", color: "#E2652E", marginBottom: 16 }}>
+                  <p style={{ fontSize: 11, fontWeight: 600, letterSpacing: "0.15em", textTransform: "uppercase", color: "var(--accent)", marginBottom: 16 }}>
                     PRE-TRAINING
                   </p>
                   <div style={{ display: "flex", alignItems: "baseline" }}>
                     <span style={{ color: "#f26522", fontSize: 90, fontWeight: 600, lineHeight: 1 }}>300+</span>
-                    <span style={{ fontSize: 24, color: "#1A1A1F", marginLeft: 12 }}>Years</span>
+                    <span style={{ fontSize: 24, color: "var(--text)", marginLeft: 12 }}>Years</span>
                   </div>
-                  <p style={{ fontSize: 15, color: "#6B6B74", marginTop: 12, lineHeight: 1.6 }}>of web-scale video data</p>
+                  <p style={{ fontSize: 15, color: "var(--text-muted)", marginTop: 12, lineHeight: 1.6 }}>of web-scale video data</p>
                 </div>
               </FadeIn>
 
               <FadeIn delay={2}>
                 <div
                   style={{
-                    background: "#FFFFFF",
+                    background: "var(--surface)",
                     borderRadius: 12,
                     padding: "40px 36px",
-                    border: "1px solid #E2E2E6",
-                    borderTop: "3px solid #E2652E",
-                    boxShadow: "0 4px 20px rgba(226, 101, 46, 0.08)",
+                    border: "1px solid var(--border)",
+                    borderTop: "3px solid var(--accent)",
+                    boxShadow: "var(--image-shadow)",
                   }}
                 >
-                  <p style={{ fontSize: 11, fontWeight: 600, letterSpacing: "0.15em", textTransform: "uppercase", color: "#E2652E", marginBottom: 16 }}>
+                  <p style={{ fontSize: 11, fontWeight: 600, letterSpacing: "0.15em", textTransform: "uppercase", color: "var(--accent)", marginBottom: 16 }}>
                     POST-TRAINING
                   </p>
                   <div style={{ display: "flex", alignItems: "baseline" }}>
                     <span style={{ color: "#f26522", fontSize: 90, fontWeight: 600, lineHeight: 1 }}>10-20</span>
-                    <span style={{ fontSize: 24, color: "#1A1A1F", marginLeft: 12 }}>Hours</span>
+                    <span style={{ fontSize: 24, color: "var(--text)", marginLeft: 12 }}>Hours</span>
                   </div>
-                  <p style={{ fontSize: 15, color: "#6B6B74", marginTop: 12, lineHeight: 1.6 }}>trajectory data</p>
+                  <p style={{ fontSize: 15, color: "var(--text-muted)", marginTop: 12, lineHeight: 1.6 }}>trajectory data</p>
                 </div>
               </FadeIn>
             </div>
@@ -299,11 +317,11 @@ export default function Home() {
             {/* Bottom paragraph */}
             <FadeIn>
               <div style={{ display: "flex", alignItems: "center", gap: 20, marginTop: 48, marginBottom: 32 }}>
-                <div style={{ flex: 1, height: 1, backgroundColor: "#E2E2E6" }} />
-                <div style={{ width: 8, height: 8, borderRadius: "50%", backgroundColor: "#E2652E" }} />
-                <div style={{ flex: 1, height: 1, backgroundColor: "#E2E2E6" }} />
+                <div style={{ flex: 1, height: 1, backgroundColor: "var(--border)" }} />
+                <div style={{ width: 8, height: 8, borderRadius: "50%", backgroundColor: "var(--accent)" }} />
+                <div style={{ flex: 1, height: 1, backgroundColor: "var(--border)" }} />
               </div>
-              <p className="mx-auto" style={{ lineHeight: 1.8, color: "#6B6B74", maxWidth: 700, textAlign: "center", fontSize: 17 }}>
+              <p className="mx-auto" style={{ lineHeight: 1.8, color: "var(--text-muted)", maxWidth: 700, textAlign: "center", fontSize: 17 }}>
                 We first pre-train our model with over a million videos,
                 giving it a strong prior on motion, physics, and dynamics. We
                 then post-train on action data collected on the robot to
@@ -317,11 +335,11 @@ export default function Home() {
         </section>
 
         {/* ── Research Demos ── */}
-        <section style={{ background: "#FAFAFA", borderRadius: 12, margin: "0 8px", paddingTop: 96, paddingBottom: 96 }}>
+        <section style={{ background: "var(--bg)", borderRadius: 12, margin: "0 8px", paddingTop: 96, paddingBottom: 96 }}>
           <div className="rhoda-container">
             <FadeIn className="text-center">
-              <h2 style={{ color: "#1A1A1F" }}>We make robots smarter</h2>
-              <p className="mx-auto mt-8" style={{ maxWidth: 700, lineHeight: 1.7, color: "#6B6B74" }}>
+              <h2 style={{ color: "var(--text)" }}>We make robots smarter</h2>
+              <p className="mx-auto mt-8" style={{ maxWidth: 700, lineHeight: 1.7, color: "var(--text-muted)" }}>
                 We explore a new paradigm for scaling robot intelligence with
                 web-scale video pre-training. We&apos;ve published an
                 in-depth research blog to discuss the novel architectural
@@ -343,8 +361,8 @@ export default function Home() {
               </div>
               <div className="lg:w-1/2 flex items-center">
                 <div style={{ borderLeft: "2px solid #C45230", paddingLeft: 28 }}>
-                  <h5 style={{ color: "#1A1A1F", marginBottom: 16 }}>Returns processing</h5>
-                  <p style={{ color: "#6B6B74", lineHeight: 1.7 }}>
+                  <h5 style={{ color: "var(--text)", marginBottom: 16 }}>Returns processing</h5>
+                  <p style={{ color: "var(--text-muted)", lineHeight: 1.7 }}>
                     This is an end-to-end returns processing task for a customer in the logistics industry. The task contains ambiguity—visually similar states can correspond to very different points in the pipeline. Rather than relying on the current frame alone the model maintains memory, in the form of a long history of frames.
                   </p>
                 </div>
@@ -360,8 +378,8 @@ export default function Home() {
               </div>
               <div className="lg:w-1/2 flex items-center">
                 <div style={{ borderLeft: "2px solid #C45230", paddingLeft: 28 }}>
-                  <h5 style={{ color: "#1A1A1F", marginBottom: 16 }}>Bearing decanting</h5>
-                  <p style={{ color: "#6B6B74", lineHeight: 1.7 }}>
+                  <h5 style={{ color: "var(--text)", marginBottom: 16 }}>Bearing decanting</h5>
+                  <p style={{ color: "var(--text-muted)", lineHeight: 1.7 }}>
                     This task comes from an automotive assembly line. The customer initially believed it could not be automated because of several challenges: each box weighs 10 kg, the lifting strap can easily tear, removing the tab requires precise control, and the transparent plastic bag is difficult for a robot to grasp.
                   </p>
                 </div>
@@ -377,8 +395,8 @@ export default function Home() {
               </div>
               <div className="lg:w-1/2 flex items-center">
                 <div style={{ borderLeft: "2px solid #C45230", paddingLeft: 28 }}>
-                  <h5 style={{ color: "#1A1A1F", marginBottom: 16 }}>Contico breakdown</h5>
-                  <p style={{ color: "#6B6B74", lineHeight: 1.7 }}>
+                  <h5 style={{ color: "var(--text)", marginBottom: 16 }}>Contico breakdown</h5>
+                  <p style={{ color: "var(--text-muted)", lineHeight: 1.7 }}>
                     Contico are 50-pound, heavy-duty boxes that are ubiquitous in manufacturing for transporting materials between facilities. After use, they must be manually cleared of debris of random sizes and type, unlatched, and collapsed for return or storage. This task is difficult to automate due to the large box size and variability in debris.
                   </p>
                 </div>
@@ -394,8 +412,8 @@ export default function Home() {
               </div>
               <div className="lg:w-1/2 flex items-center">
                 <div style={{ borderLeft: "2px solid #C45230", paddingLeft: 28 }}>
-                  <h5 style={{ color: "#1A1A1F", marginBottom: 16 }}>Human demo following</h5>
-                  <p style={{ color: "#6B6B74", lineHeight: 1.7 }}>
+                  <h5 style={{ color: "var(--text)", marginBottom: 16 }}>Human demo following</h5>
+                  <p style={{ color: "var(--text-muted)", lineHeight: 1.7 }}>
                     Long-context enables in-context learning, allowing us to inject human demonstrations into our robot&apos;s context window. This enables our robot to perform tasks single-shot, without retraining. Here we demonstrate single-shot pick and place and single-shot drawing from human demonstrations.
                   </p>
                 </div>
@@ -408,17 +426,17 @@ export default function Home() {
         <section style={{ paddingTop: 96, paddingBottom: 96 }}>
           <div className="rhoda-container">
             <FadeIn className="text-center">
-              <h2 style={{ color: "#1A1A1F" }}>Commercial Applications</h2>
-              <p className="mx-auto mt-6" style={{ maxWidth: 620, lineHeight: 1.7, color: "#6B6B74" }}>
+              <h2 style={{ color: "var(--text)" }}>Commercial Applications</h2>
+              <p className="mx-auto mt-6" style={{ maxWidth: 620, lineHeight: 1.7, color: "var(--text-muted)" }}>
                 We work with a variety of customers across verticals in
                 automotive, manufacturing, logistics, and ecommerce. If
                 you&apos;re interested in working with us at your facility,
                 reach out here.
               </p>
               <div style={{ display: "flex", alignItems: "center", gap: 20, marginTop: 32, maxWidth: 400, marginLeft: "auto", marginRight: "auto" }}>
-                <div style={{ flex: 1, height: 1, backgroundColor: "#E2E2E6" }} />
-                <div style={{ width: 8, height: 8, borderRadius: "50%", backgroundColor: "#E2652E" }} />
-                <div style={{ flex: 1, height: 1, backgroundColor: "#E2E2E6" }} />
+                <div style={{ flex: 1, height: 1, backgroundColor: "var(--border)" }} />
+                <div style={{ width: 8, height: 8, borderRadius: "50%", backgroundColor: "var(--accent)" }} />
+                <div style={{ flex: 1, height: 1, backgroundColor: "var(--border)" }} />
               </div>
             </FadeIn>
 
@@ -431,13 +449,13 @@ export default function Home() {
               ].map((item, i) => (
                 <FadeIn key={item.src} delay={i + 1}>
                   {/* Image */}
-                  <div style={{ borderRadius: 12, overflow: "hidden", boxShadow: "0 4px 20px rgba(226, 101, 46, 0.1)" }}>
+                  <div style={{ borderRadius: 12, overflow: "hidden", boxShadow: "var(--image-shadow)" }}>
                     <Image src={item.src} alt={item.alt} width={600} height={400} className="w-full h-auto" style={{ display: "block" }} />
                   </div>
                   {/* Label — separate, below */}
                   <div style={{ display: "flex", alignItems: "center", gap: 10, marginTop: 14 }}>
-                    <div style={{ width: 20, height: 2, backgroundColor: "#E2652E", borderRadius: 1 }} />
-                    <p style={{ fontSize: 14, fontWeight: 500, letterSpacing: "0.06em", color: "#1A1A1F", textTransform: "uppercase" }}>
+                    <div style={{ width: 20, height: 2, backgroundColor: "var(--accent)", borderRadius: 1 }} />
+                    <p style={{ fontSize: 14, fontWeight: 500, letterSpacing: "0.06em", color: "var(--text)", textTransform: "uppercase" }}>
                       {item.label}
                     </p>
                   </div>
@@ -496,7 +514,7 @@ export default function Home() {
       {/* ── Investors ── */}
       <section style={{ paddingTop: 80, paddingBottom: 64, marginTop: 48 }}>
         <FadeIn className="text-center">
-          <h3 style={{ color: "#1A1A1F" }}>Our Investors</h3>
+          <h3 style={{ color: "var(--text)" }}>Our Investors</h3>
         </FadeIn>
         <div className="mt-12 overflow-hidden">
           <InvestorMarquee investors={INVESTORS} />

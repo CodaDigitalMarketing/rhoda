@@ -8,7 +8,7 @@ export default function PressReleasePage() {
     <>
       <Navbar />
 
-      <main className="flex-1 bg-[#FAFAFA]">
+      <main className="flex-1 bg-[var(--bg)]">
         {/* Top Section */}
         <section className="text-center px-6 pt-[160px]">
           <p
@@ -19,7 +19,7 @@ export default function PressReleasePage() {
           </p>
 
           <h1
-            className="font-bold max-w-[800px] mx-auto mb-6 text-[#1A1A1F]"
+            className="font-bold max-w-[800px] mx-auto mb-6 text-[var(--text)]"
             style={{ fontSize: "clamp(1.9rem, 3.5vw, 3.2rem)" }}
           >
             Rhoda AI Exits Stealth with $450 Million Series A to Bring Robots Out
@@ -28,7 +28,7 @@ export default function PressReleasePage() {
 
           <Link
             href="/news"
-            className="inline-block transition-colors text-[#6B6B74] hover:text-[#1A1A1F]"
+            className="inline-block transition-colors text-[var(--text-muted)] hover:text-[var(--text)]"
             style={{ fontSize: 18 }}
           >
             &larr; Back to News
@@ -50,7 +50,7 @@ export default function PressReleasePage() {
 
           {/* Dateline + Opening */}
           <p style={{ fontSize: 18, lineHeight: 1.85, color: "#6B6B74" }}>
-            <strong className="text-[#1A1A1F]">
+            <strong className="text-[var(--text)]">
               PALO ALTO, CA — March 10, 2026 —
             </strong>{" "}
             Rhoda AI today announced its public launch after 18 months in
@@ -94,9 +94,9 @@ export default function PressReleasePage() {
           </p>
 
           {/* Quote 1 - Jagdeep Singh */}
-          <blockquote className="my-10 bg-[#FFFFFF] border-l-[3px] border-[#C45230] rounded-[12px] shadow-sm py-8 px-8">
+          <blockquote className="my-10 bg-[var(--surface)] border-l-[3px] border-[#C45230] rounded-[12px] shadow-sm py-8 px-8">
             <p
-              className="italic text-[#1A1A1F]"
+              className="italic text-[var(--text)]"
               style={{ fontSize: 20, lineHeight: 1.85 }}
             >
               &ldquo;The path to general-purpose robotics requires models that
@@ -124,9 +124,9 @@ export default function PressReleasePage() {
           </p>
 
           {/* Quote 2 - Jens Wiese */}
-          <blockquote className="my-10 bg-[#FFFFFF] border-l-[3px] border-[#C45230] rounded-[12px] shadow-sm py-8 px-8">
+          <blockquote className="my-10 bg-[var(--surface)] border-l-[3px] border-[#C45230] rounded-[12px] shadow-sm py-8 px-8">
             <p
-              className="italic text-[#1A1A1F]"
+              className="italic text-[var(--text)]"
               style={{ fontSize: 20, lineHeight: 1.85 }}
             >
               &ldquo;Manufacturing environments are inherently variable —
@@ -145,9 +145,9 @@ export default function PressReleasePage() {
           </blockquote>
 
           {/* Quote 3 - Sandesh Patnam */}
-          <blockquote className="my-10 bg-[#FFFFFF] border-l-[3px] border-[#C45230] rounded-[12px] shadow-sm py-8 px-8">
+          <blockquote className="my-10 bg-[var(--surface)] border-l-[3px] border-[#C45230] rounded-[12px] shadow-sm py-8 px-8">
             <p
-              className="italic text-[#1A1A1F]"
+              className="italic text-[var(--text)]"
               style={{ fontSize: 20, lineHeight: 1.85 }}
             >
               &ldquo;We&apos;ve been looking for a team that can credibly
@@ -191,7 +191,7 @@ export default function PressReleasePage() {
           </p>
 
           {/* About Rhoda */}
-          <div className="mt-12 pt-8 border-t border-[#E2E2E6]">
+          <div className="mt-12 pt-8 border-t border-[var(--border)]">
             <h4
               className="font-bold mb-4"
               style={{ fontSize: 20, color: "#1A1A1F" }}
@@ -208,7 +208,7 @@ export default function PressReleasePage() {
               beyond. For more information, visit{" "}
               <a
                 href="https://rhoda.com"
-                className="underline hover:text-[#1A1A1F] transition-colors"
+                className="underline hover:text-[var(--text)] transition-colors"
                 style={{ color: "#C45230" }}
               >
                 rhoda.com
@@ -218,7 +218,7 @@ export default function PressReleasePage() {
           </div>
 
           {/* Press Contact */}
-          <div className="mt-12 pt-8 border-t border-[#E2E2E6]">
+          <div className="mt-12 pt-8 border-t border-[var(--border)]">
             <p
               className="font-semibold mb-1"
               style={{ fontSize: 16, color: "#6B6B74" }}
@@ -231,7 +231,7 @@ export default function PressReleasePage() {
             <p style={{ fontSize: 16 }}>
               <a
                 href="mailto:rhoda@vsc.co"
-                className="underline hover:text-[#1A1A1F] transition-colors"
+                className="underline hover:text-[var(--text)] transition-colors"
                 style={{ color: "#C45230" }}
               >
                 rhoda@vsc.co

@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import ThemeProvider from "@/components/ThemeProvider";
+import ThemeToggle from "@/components/ThemeToggle";
 
 export const metadata: Metadata = {
   title: "Rhoda AI",
@@ -12,7 +14,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
         <link
           rel="stylesheet"
@@ -23,9 +25,24 @@ export default function RootLayout({
           rel="stylesheet"
         />
         <link rel="icon" href="/assets/images/logo/favicon.svg" />
+        {/* Prevent flash of wrong theme */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              try {
+                if (localStorage.getItem('rhoda-theme') === 'dark') {
+                  document.documentElement.classList.add('dark');
+                }
+              } catch(e) {}
+            `,
+          }}
+        />
       </head>
-      <body className="min-h-screen bg-[#FAFAFA] text-[#1A1A1F]">
-        {children}
+      <body className="min-h-screen" style={{ backgroundColor: "var(--bg)", color: "var(--text)" }}>
+        <ThemeProvider>
+          {children}
+          <ThemeToggle />
+        </ThemeProvider>
       </body>
     </html>
   );

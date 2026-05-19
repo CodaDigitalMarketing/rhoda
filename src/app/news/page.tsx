@@ -7,10 +7,10 @@ export default function NewsPage() {
     <>
       <Navbar />
 
-      <main className="flex-1 pt-[160px] pb-20 bg-[#FAFAFA]">
+      <main className="flex-1 pt-[160px] pb-20 bg-[var(--bg)]">
         <div className="max-w-[1140px] mx-auto w-full px-6">
           <h1
-            className="text-center font-bold text-[#1A1A1F] mb-12"
+            className="text-center font-bold text-[var(--text)] mb-12"
             style={{ fontSize: 48 }}
           >
             News
@@ -22,7 +22,7 @@ export default function NewsPage() {
               href="https://www.bloomberg.com/news/articles/2026-03-10/ai-robotics-startup-rhoda-valued-at-1-7-billion-in-new-funding"
               target="_blank"
               rel="noopener noreferrer"
-              className="block bg-[#FFFFFF] rounded-[12px] border border-[#E2E2E6] hover:border-[#C45230]/40 hover:shadow-lg transition-all overflow-hidden"
+              className="block bg-[var(--surface)] rounded-[12px] border border-[var(--border)] hover:border-[#C45230]/40 hover:shadow-lg transition-all overflow-hidden"
             >
               <div className="flex">
                 <div className="w-[3px] bg-[#C45230] flex-shrink-0" />
@@ -40,12 +40,12 @@ export default function NewsPage() {
                   </span>
 
                   <h3
-                    className="font-bold mb-3 text-[#1A1A1F]"
+                    className="font-bold mb-3 text-[var(--text)]"
                     style={{ fontSize: 24, lineHeight: 1.4 }}
                   >
                     AI Robotics Startup Rhoda Valued at $1.7 Billion in New
                     Funding{" "}
-                    <span className="text-[#6B6B74]">&#8599;</span>
+                    <span className="text-[var(--text-muted)]">&#8599;</span>
                   </h3>
 
                   <p style={{ fontSize: 15, color: "#6B6B74" }}>
@@ -58,7 +58,7 @@ export default function NewsPage() {
             {/* Card 2 - Press Release */}
             <Link
               href="/news/press-release"
-              className="block bg-[#FFFFFF] rounded-[12px] border border-[#E2E2E6] hover:border-[#C45230]/40 hover:shadow-lg transition-all overflow-hidden"
+              className="block bg-[var(--surface)] rounded-[12px] border border-[var(--border)] hover:border-[#C45230]/40 hover:shadow-lg transition-all overflow-hidden"
             >
               <div className="flex">
                 <div className="w-[3px] bg-[#C45230] flex-shrink-0" />
@@ -76,7 +76,7 @@ export default function NewsPage() {
                   </span>
 
                   <h3
-                    className="font-bold mb-3 text-[#1A1A1F]"
+                    className="font-bold mb-3 text-[var(--text)]"
                     style={{ fontSize: 24, lineHeight: 1.4 }}
                   >
                     Rhoda AI Exits Stealth with $450 Million Series A to Bring

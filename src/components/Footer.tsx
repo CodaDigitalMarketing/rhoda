@@ -18,27 +18,26 @@ export default function Footer() {
       <div
         style={{
           borderRadius: 12,
-          backgroundColor: "#FDF0EB",
-          color: "#1A1A1F",
+          backgroundColor: "var(--footer-bg)",
+          color: "var(--footer-text)",
         }}
       >
-        {/* Main footer content */}
         <div
           className="max-w-[1140px] mx-auto px-8 md:px-12"
           style={{ paddingTop: 64, paddingBottom: 48 }}
         >
           <div className="flex flex-col lg:flex-row gap-16">
-            {/* Left column — brand */}
             <div className="lg:w-5/12">
               <Image
                 src="/assets/images/logo/rhoda-logo-light.svg"
                 alt="rhoda Ai"
                 width={120}
                 height={32}
+                style={{ filter: "var(--logo-filter)" }}
               />
               <p
                 className="mt-6"
-                style={{ fontSize: 16, lineHeight: 1.7, color: "#1A1A1F" }}
+                style={{ fontSize: 16, lineHeight: 1.7, color: "var(--footer-muted)" }}
               >
                 Rhoda develops cutting edge robotic intelligence to bring
                 generalist robots to the real world.
@@ -50,50 +49,29 @@ export default function Footer() {
               </div>
             </div>
 
-            {/* Right columns */}
             <div className="lg:w-7/12 flex flex-col sm:flex-row gap-12 sm:gap-16">
-              {/* Navigation */}
               <div className="sm:w-1/2">
                 <p
                   style={{
                     fontSize: 11,
                     letterSpacing: "0.15em",
-                    color: "#6B6B74",
+                    color: "var(--footer-muted)",
                     textTransform: "uppercase",
                     fontWeight: 600,
                     marginBottom: 20,
-                    fontFamily:
-                      '"Space Grotesk", system-ui, sans-serif',
+                    fontFamily: '"Space Grotesk", system-ui, sans-serif',
                   }}
                 >
                   Navigation
                 </p>
-                <ul
-                  style={{
-                    listStyle: "none",
-                    margin: 0,
-                    padding: 0,
-                    display: "flex",
-                    flexDirection: "column",
-                    gap: 12,
-                  }}
-                >
+                <ul style={{ listStyle: "none", margin: 0, padding: 0, display: "flex", flexDirection: "column", gap: 12 }}>
                   {NAV_LINKS.map((link) => (
                     <li key={link.href}>
                       <Link
                         href={link.href}
-                        style={{
-                          fontSize: 15,
-                          color: "#6B6B74",
-                          textDecoration: "none",
-                          transition: "color 0.2s",
-                        }}
-                        onMouseEnter={(e) =>
-                          (e.currentTarget.style.color = "#C45230")
-                        }
-                        onMouseLeave={(e) =>
-                          (e.currentTarget.style.color = "#6B6B74")
-                        }
+                        style={{ fontSize: 15, color: "var(--footer-muted)", textDecoration: "none", transition: "color 0.2s" }}
+                        onMouseEnter={(e) => (e.currentTarget.style.color = "var(--accent)")}
+                        onMouseLeave={(e) => (e.currentTarget.style.color = "var(--footer-muted)")}
                       >
                         {link.label}
                       </Link>
@@ -102,64 +80,38 @@ export default function Footer() {
                 </ul>
               </div>
 
-              {/* Contact */}
               <div className="sm:w-1/2">
                 <p
                   style={{
                     fontSize: 11,
                     letterSpacing: "0.15em",
-                    color: "#6B6B74",
+                    color: "var(--footer-muted)",
                     textTransform: "uppercase",
                     fontWeight: 600,
                     marginBottom: 20,
-                    fontFamily:
-                      '"Space Grotesk", system-ui, sans-serif',
+                    fontFamily: '"Space Grotesk", system-ui, sans-serif',
                   }}
                 >
                   Contact
                 </p>
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    gap: 12,
-                  }}
-                >
+                <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
                   <a
                     href="mailto:info@rhoda.ai"
-                    style={{
-                      fontSize: 15,
-                      color: "#6B6B74",
-                      textDecoration: "none",
-                      transition: "color 0.2s",
-                    }}
-                    onMouseEnter={(e) =>
-                      (e.currentTarget.style.color = "#C45230")
-                    }
-                    onMouseLeave={(e) =>
-                      (e.currentTarget.style.color = "#6B6B74")
-                    }
+                    style={{ fontSize: 15, color: "var(--footer-muted)", textDecoration: "none", transition: "color 0.2s" }}
+                    onMouseEnter={(e) => (e.currentTarget.style.color = "var(--accent)")}
+                    onMouseLeave={(e) => (e.currentTarget.style.color = "var(--footer-muted)")}
                   >
                     info@rhoda.ai
                   </a>
                   <a
                     href="mailto:research@rhoda.ai"
-                    style={{
-                      fontSize: 15,
-                      color: "#6B6B74",
-                      textDecoration: "none",
-                      transition: "color 0.2s",
-                    }}
-                    onMouseEnter={(e) =>
-                      (e.currentTarget.style.color = "#C45230")
-                    }
-                    onMouseLeave={(e) =>
-                      (e.currentTarget.style.color = "#6B6B74")
-                    }
+                    style={{ fontSize: 15, color: "var(--footer-muted)", textDecoration: "none", transition: "color 0.2s" }}
+                    onMouseEnter={(e) => (e.currentTarget.style.color = "var(--accent)")}
+                    onMouseLeave={(e) => (e.currentTarget.style.color = "var(--footer-muted)")}
                   >
                     research@rhoda.ai
                   </a>
-                  <span style={{ fontSize: 15, color: "#6B6B74" }}>
+                  <span style={{ fontSize: 15, color: "var(--footer-muted)" }}>
                     Palo Alto, CA
                   </span>
                 </div>
@@ -168,16 +120,11 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Bottom bar */}
         <div
           className="max-w-[1140px] mx-auto px-8 md:px-12"
-          style={{
-            borderTop: "1px solid #E2E2E6",
-            paddingTop: 20,
-            paddingBottom: 20,
-          }}
+          style={{ borderTop: "1px solid var(--footer-border)", paddingTop: 20, paddingBottom: 20 }}
         >
-          <p style={{ fontSize: 13, color: "#6B6B74" }}>
+          <p style={{ fontSize: 13, color: "var(--footer-muted)" }}>
             &copy; 2026 Rhoda AI. All rights reserved.
           </p>
         </div>

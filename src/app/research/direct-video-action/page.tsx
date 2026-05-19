@@ -61,7 +61,7 @@ function LazyVimeo({ id, hash, title, small = false }: { id: string; hash: strin
   }, []);
 
   return (
-    <div ref={ref} className={`aspect-video w-full ${small ? "rounded-xl" : "rounded-2xl"} overflow-hidden relative`} style={{ backgroundColor: "#F0EFEC" }}>
+    <div ref={ref} className={`aspect-video w-full ${small ? "rounded-xl" : "rounded-2xl"} overflow-hidden relative`} style={{ backgroundColor: "var(--surface)" }}>
       {/* Shimmer placeholder */}
       {!loaded && (
         <div className="absolute inset-0 flex items-center justify-center" style={{ background: "linear-gradient(90deg, #F0EFEC 25%, #E8E7E3 50%, #F0EFEC 75%)", backgroundSize: "200% 100%", animation: "shimmer 1.5s ease-in-out infinite" }}>
@@ -99,8 +99,8 @@ function SmallVimeoEmbed({ id, hash, title }: { id: string; hash: string; title?
 /* ------------------------------------------------------------------ */
 function FigureCaption({ num, children }: { num: number; children: React.ReactNode }) {
   return (
-    <p className="mt-3 text-[13px] text-[#6B6B74] leading-relaxed">
-      <span className="text-[#C45230] font-semibold">Figure&nbsp;{num}.</span>{" "}
+    <p className="mt-3 text-[13px] text-[var(--text-muted)] leading-relaxed">
+      <span className="text-[var(--accent)] font-semibold">Figure&nbsp;{num}.</span>{" "}
       {children}
     </p>
   );
@@ -108,8 +108,8 @@ function FigureCaption({ num, children }: { num: number; children: React.ReactNo
 
 function VideoCaption({ num, children }: { num: number; children: React.ReactNode }) {
   return (
-    <p className="mt-3 text-[13px] text-[#6B6B74] leading-relaxed">
-      <span className="text-[#C45230] font-semibold">Video&nbsp;{num}.</span>{" "}
+    <p className="mt-3 text-[13px] text-[var(--text-muted)] leading-relaxed">
+      <span className="text-[var(--accent)] font-semibold">Video&nbsp;{num}.</span>{" "}
       {children}
     </p>
   );
@@ -120,8 +120,8 @@ function VideoCaption({ num, children }: { num: number; children: React.ReactNod
 /* ------------------------------------------------------------------ */
 function Definition({ term, children }: { term: string; children: React.ReactNode }) {
   return (
-    <div className="rounded-lg bg-[#F7F6F3] font-sans text-[18px] leading-relaxed text-[#2C2C2E] px-6 py-5 shadow-[4px_4px_16px_rgba(0,0,0,0.08)] my-8" style={{ borderLeft: "3px solid #C45230" }}>
-      <strong style={{ color: "#C45230" }}>{term}:</strong> {children}
+    <div className="rounded-lg bg-[var(--surface)] font-sans text-[18px] leading-relaxed text-[var(--text)] px-6 py-5 shadow-[4px_4px_16px_rgba(0,0,0,0.08)] my-8" style={{ borderLeft: "3px solid var(--accent)" }}>
+      <strong style={{ color: "var(--accent)" }}>{term}:</strong> {children}
     </div>
   );
 }
@@ -167,8 +167,8 @@ function TableOfContents({ mobile = false }: { mobile?: boolean }) {
             onClick={() => setMobileOpen(false)}
             className={`block py-0.5 text-[13px] transition-colors ${
               activeId === item.id
-                ? "text-[#C45230] font-medium"
-                : "text-[#6B6B74] hover:text-[#2C2C2E]"
+                ? "text-[var(--accent)] font-medium"
+                : "text-[var(--text-muted)] hover:text-[var(--text)]"
             }`}
           >
             {item.label}
@@ -180,8 +180,8 @@ function TableOfContents({ mobile = false }: { mobile?: boolean }) {
               onClick={() => setMobileOpen(false)}
               className={`block py-0.5 pl-3 text-[11px] transition-colors ${
                 activeId === child.id
-                  ? "text-[#C45230] font-medium"
-                  : "text-[#6B6B74] hover:text-[#2C2C2E]"
+                  ? "text-[var(--accent)] font-medium"
+                  : "text-[var(--text-muted)] hover:text-[var(--text)]"
               }`}
             >
               {child.label}
@@ -194,13 +194,13 @@ function TableOfContents({ mobile = false }: { mobile?: boolean }) {
 
   if (mobile) {
     return (
-      <div className="min-[1300px]:hidden mb-12 border border-[#E2E2E6] rounded-lg overflow-hidden">
+      <div className="min-[1300px]:hidden mb-12 border border-[var(--border)] rounded-lg overflow-hidden">
         <button
           onClick={() => setMobileOpen(!mobileOpen)}
-          className="w-full flex items-center justify-between px-5 py-3 text-[13px] font-medium text-[#2C2C2E] bg-[#F0EFEC]"
+          className="w-full flex items-center justify-between px-5 py-3 text-[13px] font-medium text-[var(--text)] bg-[var(--surface)]"
         >
           <span>Table of Contents</span>
-          <span className="text-[#6B6B74]">{mobileOpen ? "−" : "+"}</span>
+          <span className="text-[var(--text-muted)]">{mobileOpen ? "−" : "+"}</span>
         </button>
         {mobileOpen && <div className="px-5 py-4">{linkList}</div>}
       </div>
@@ -210,7 +210,7 @@ function TableOfContents({ mobile = false }: { mobile?: boolean }) {
   return (
     <div className="hidden min-[1300px]:block absolute right-full mr-6 top-0 bottom-0">
       <div className="sticky top-28 w-[180px]">
-        <p className="text-[11px] uppercase tracking-[0.15em] text-[#C45230] font-semibold mb-3">
+        <p className="text-[11px] uppercase tracking-[0.15em] text-[var(--accent)] font-semibold mb-3">
           Contents
         </p>
         {linkList}
@@ -232,7 +232,7 @@ function EdgeCaseGrid({
       {items.map((item) => (
         <div key={item.id}>
           <SmallVimeoEmbed id={item.id} hash={item.hash} title={item.label} />
-          <p className="mt-1.5 text-[13px] text-[#6B6B74]">{item.label}</p>
+          <p className="mt-1.5 text-[13px] text-[var(--text-muted)]">{item.label}</p>
         </div>
       ))}
     </div>
@@ -244,16 +244,16 @@ function EdgeCaseGrid({
 /* ------------------------------------------------------------------ */
 export default function DirectVideoActionPage() {
   return (
-    <div className="min-h-screen bg-[#FAFAFA]">
+    <div className="min-h-screen bg-[var(--bg)]">
       <Navbar />
 
       {/* ── Header ─────────────────────────────────────────────── */}
       <header className="pt-36 pb-10 px-6">
         <div className="max-w-[840px] mx-auto">
-          <h1 className="text-3xl md:text-[2.5rem] lg:text-[2.75rem] font-sans font-normal leading-[1.25] tracking-tight text-[#2C2C2E] mb-8">
+          <h1 className="text-3xl md:text-[2.5rem] lg:text-[2.75rem] font-sans font-normal leading-[1.25] tracking-tight text-[var(--text)] mb-8">
             Causal Video Models Are Data-Efficient Robot Policy Learners
           </h1>
-          <p className="text-xs tracking-[0.15em] uppercase text-[#6B6B74]">
+          <p className="text-xs tracking-[0.15em] uppercase text-[var(--text-muted)]">
             March 2026{" "}
             <span className="text-[#D0D0D4]">&middot;</span>{" "}
             Rhoda AI Research
@@ -263,7 +263,7 @@ export default function DirectVideoActionPage() {
 
       {/* ── Hero Video ─────────────────────────────────────────── */}
       <div className="max-w-[1020px] mx-auto px-6 pb-12">
-        <div className="rounded-xl border border-[#E2E2E6] overflow-hidden">
+        <div className="rounded-xl border border-[var(--border)] overflow-hidden">
           <div className="aspect-video w-full">
             <iframe
               src="https://player.vimeo.com/video/1176040320?h=6ca3ecdbd9&title=0&byline=0&portrait=0&vimeo_logo=0&dnt=1&background=1"
@@ -278,7 +278,7 @@ export default function DirectVideoActionPage() {
 
       {/* ── Intro paragraph ────────────────────────────────────── */}
       <div className="max-w-[840px] mx-auto px-6 pb-10">
-        <p className="italic text-lg text-[#6B6B74] leading-relaxed">
+        <p className="italic text-lg text-[var(--text-muted)] leading-relaxed">
           At Rhoda AI, we are building towards generalist robotics. Our Direct
           Video-Action Model (DVA) reformulates robot policies as video
           generation, unlocking data-efficient task learning, scaling,
@@ -288,7 +288,7 @@ export default function DirectVideoActionPage() {
 
       {/* ── Divider ────────────────────────────────────────────── */}
       <div className="max-w-[840px] mx-auto px-6">
-        <div className="border-t border-[#E2E2E6]" />
+        <div className="border-t border-[var(--border)]" />
       </div>
       <div className="pb-16" />
 
@@ -304,11 +304,11 @@ export default function DirectVideoActionPage() {
               THE CHALLENGE OF GENERALIST ROBOTICS
               ================================================================ */}
           <section id="the-challenge-of-generalist-robotics">
-            <div className="w-10 h-[3px] bg-[#C45230] mb-6 rounded-full" />
-            <h2 className="text-3xl md:text-[2.25rem] lg:text-[2.5rem] font-sans font-bold leading-tight tracking-tight text-[#2C2C2E] mb-8">
+            <div className="w-10 h-[3px] bg-[var(--accent)] mb-6 rounded-full" />
+            <h2 className="text-3xl md:text-[2.25rem] lg:text-[2.5rem] font-sans font-bold leading-tight tracking-tight text-[var(--text)] mb-8">
               The Challenge of Generalist Robotics
             </h2>
-            <div className="space-y-6 text-base leading-[1.85] text-[#6B6B74]">
+            <div className="space-y-6 text-base leading-[1.85] text-[var(--text-muted)]">
               <p>
                 For decades, specialized robots have excelled in tightly
                 controlled settings: factory arms welding the same joint millions
@@ -340,30 +340,30 @@ export default function DirectVideoActionPage() {
               </p>
               <ul className="list-disc pl-6 space-y-2">
                 <li>
-                  <strong className="text-[#2C2C2E]">Data-efficient task learning</strong>{" "}
+                  <strong className="text-[var(--text)]">Data-efficient task learning</strong>{" "}
                   &mdash; new tasks can be learned with roughly 10 hours of robot
                   data, collected in just a few days.
                 </li>
                 <li>
-                  <strong className="text-[#2C2C2E]">Long-context visual memory</strong>{" "}
+                  <strong className="text-[var(--text)]">Long-context visual memory</strong>{" "}
                   &mdash; the model conditions on hundreds of frames of
                   noise-free visual history, enabling coherent behavior over
                   extended, multi-step episodes.
                 </li>
                 <li>
-                  <strong className="text-[#2C2C2E]">One-shot learning</strong>{" "}
+                  <strong className="text-[var(--text)]">One-shot learning</strong>{" "}
                   &mdash; given a single human demonstration, the policy can
                   generalize to novel objects, configurations, and environments.
                 </li>
                 <li>
-                  <strong className="text-[#2C2C2E]">Interpretability through video generation</strong>{" "}
+                  <strong className="text-[var(--text)]">Interpretability through video generation</strong>{" "}
                   &mdash; because the model generates explicit visual predictions,
                   we can directly observe what the robot &ldquo;thinks&rdquo; will
                   happen next, providing a transparent window into its
                   decision-making.
                 </li>
                 <li>
-                  <strong className="text-[#2C2C2E]">Clear path for scaling</strong>{" "}
+                  <strong className="text-[var(--text)]">Clear path for scaling</strong>{" "}
                   &mdash; the architecture naturally benefits from larger video
                   pre-training datasets and increased model capacity, following
                   established scaling laws.
@@ -376,11 +376,11 @@ export default function DirectVideoActionPage() {
               DIRECT VIDEO-ACTION MODELS
               ================================================================ */}
           <section id="direct-video-action-models">
-            <div className="w-10 h-[3px] bg-[#C45230] mb-6 rounded-full" />
-            <h2 className="text-3xl md:text-[2.25rem] lg:text-[2.5rem] font-sans font-bold leading-tight tracking-tight text-[#2C2C2E] mb-8">
+            <div className="w-10 h-[3px] bg-[var(--accent)] mb-6 rounded-full" />
+            <h2 className="text-3xl md:text-[2.25rem] lg:text-[2.5rem] font-sans font-bold leading-tight tracking-tight text-[var(--text)] mb-8">
               Direct Video-Action Models
             </h2>
-            <div className="space-y-6 text-base leading-[1.85] text-[#6B6B74]">
+            <div className="space-y-6 text-base leading-[1.85] text-[var(--text-muted)]">
               <Definition term="Direct Video-Action Model">
                 A robot policy that translates predictions from a pre-trained
                 causal video model into actions in a real-time closed loop, with
@@ -388,23 +388,23 @@ export default function DirectVideoActionPage() {
               </Definition>
 
               {/* Figure 1 placeholder */}
-              <div className="border border-[#E2E2E6] bg-[#F7F6F3] px-2 py-4 rounded-lg my-8">
+              <div className="border border-[var(--border)] bg-[var(--surface)] px-2 py-4 rounded-lg my-8">
                 <div className="text-center space-y-3">
-                  <p className="text-sm font-semibold tracking-wide text-[#2C2C2E] uppercase">
+                  <p className="text-sm font-semibold tracking-wide text-[var(--text)] uppercase">
                     Direct Video-Action Model (DVA)
                   </p>
-                  <div className="flex flex-wrap items-center justify-center gap-2 text-xs text-[#6B6B74]">
-                    <span className="px-2 py-1 rounded bg-[#F0EFEC]">Video Context</span>
+                  <div className="flex flex-wrap items-center justify-center gap-2 text-xs text-[var(--text-muted)]">
+                    <span className="px-2 py-1 rounded bg-[var(--surface)]">Video Context</span>
                     <span>&rarr;</span>
-                    <span className="px-2 py-1 rounded bg-[#F0EFEC]">Causal Video Model</span>
+                    <span className="px-2 py-1 rounded bg-[var(--surface)]">Causal Video Model</span>
                     <span>&rarr;</span>
-                    <span className="px-2 py-1 rounded bg-[#F0EFEC]">Generated Video</span>
+                    <span className="px-2 py-1 rounded bg-[var(--surface)]">Generated Video</span>
                     <span>&rarr;</span>
-                    <span className="px-2 py-1 rounded bg-[#F0EFEC]">Inverse Dynamics Model</span>
+                    <span className="px-2 py-1 rounded bg-[var(--surface)]">Inverse Dynamics Model</span>
                     <span>&rarr;</span>
-                    <span className="px-2 py-1 rounded bg-[#F0EFEC]">Generated Actions</span>
+                    <span className="px-2 py-1 rounded bg-[var(--surface)]">Generated Actions</span>
                     <span>&rarr;</span>
-                    <span className="px-2 py-1 rounded bg-[#F0EFEC]">Action Rollout</span>
+                    <span className="px-2 py-1 rounded bg-[var(--surface)]">Action Rollout</span>
                   </div>
                 </div>
               </div>
@@ -432,10 +432,10 @@ export default function DirectVideoActionPage() {
 
               {/* ── Native Causal Video Models ── */}
               <section id="figure-1" className="pt-12">
-                <h3 className="text-2xl md:text-[1.75rem] lg:text-[2rem] font-sans font-bold leading-tight tracking-tight text-[#2C2C2E] mb-6">
+                <h3 className="text-2xl md:text-[1.75rem] lg:text-[2rem] font-sans font-bold leading-tight tracking-tight text-[var(--text)] mb-6">
                   Native Causal Video Models
                 </h3>
-                <div className="space-y-6 text-base leading-[1.85] text-[#6B6B74]">
+                <div className="space-y-6 text-base leading-[1.85] text-[var(--text-muted)]">
                   <p>
                     Effective DVA policies require video models that generate
                     frames causally &mdash; predicting the future conditioned only
@@ -465,22 +465,22 @@ export default function DirectVideoActionPage() {
                   </Definition>
 
                   {/* Figure 2 placeholder */}
-                  <div className="border border-[#E2E2E6] bg-[#F7F6F3] px-4 py-5 rounded-lg my-8">
+                  <div className="border border-[var(--border)] bg-[var(--surface)] px-4 py-5 rounded-lg my-8">
                     <div className="text-center space-y-2">
-                      <p className="text-xs font-semibold tracking-wide text-[#6B6B74] uppercase mb-3">
+                      <p className="text-xs font-semibold tracking-wide text-[var(--text-muted)] uppercase mb-3">
                         Context Amortization
                       </p>
-                      <div className="flex justify-center gap-1 text-[11px] text-[#6B6B74] font-mono">
+                      <div className="flex justify-center gap-1 text-[11px] text-[var(--text-muted)] font-mono">
                         {[0, 1, 2, 3, 4, 5, 6, 7].map((i) => (
                           <span
                             key={i}
-                            className="w-8 h-8 flex items-center justify-center rounded bg-[#F0EFEC] border border-[#E2E2E6]"
+                            className="w-8 h-8 flex items-center justify-center rounded bg-[var(--surface)] border border-[var(--border)]"
                           >
                             {i}
                           </span>
                         ))}
                       </div>
-                      <p className="text-[11px] text-[#6B6B74] mt-2">
+                      <p className="text-[11px] text-[var(--text-muted)] mt-2">
                         Context positions 0&ndash;7, with predictions generated at each step along the sequence
                       </p>
                     </div>
@@ -511,10 +511,10 @@ export default function DirectVideoActionPage() {
 
               {/* ── Inverse Dynamics Models ── */}
               <section id="figure-2" className="pt-12">
-                <h3 className="text-2xl md:text-[1.75rem] lg:text-[2rem] font-sans font-bold leading-tight tracking-tight text-[#2C2C2E] mb-6">
+                <h3 className="text-2xl md:text-[1.75rem] lg:text-[2rem] font-sans font-bold leading-tight tracking-tight text-[var(--text)] mb-6">
                   Translating Video to Action with Inverse Dynamics Models
                 </h3>
-                <div className="space-y-6 text-base leading-[1.85] text-[#6B6B74]">
+                <div className="space-y-6 text-base leading-[1.85] text-[var(--text-muted)]">
                   <p>
                     The bridge between video predictions and physical robot
                     actions is an inverse dynamics model (IDM). Given the current
@@ -559,10 +559,10 @@ export default function DirectVideoActionPage() {
 
               {/* ── Leapfrog Inference ── */}
               <section id="video-2" className="pt-12">
-                <h3 className="text-2xl md:text-[1.75rem] lg:text-[2rem] font-sans font-bold leading-tight tracking-tight text-[#2C2C2E] mb-6">
+                <h3 className="text-2xl md:text-[1.75rem] lg:text-[2rem] font-sans font-bold leading-tight tracking-tight text-[var(--text)] mb-6">
                   Leapfrog Inference
                 </h3>
-                <div className="space-y-6 text-base leading-[1.85] text-[#6B6B74]">
+                <div className="space-y-6 text-base leading-[1.85] text-[var(--text-muted)]">
                   <Definition term="Leapfrog Inference">
                     A strategy for continuous robot control that predicts long
                     enough into the future to cover the next prediction&rsquo;s
@@ -570,7 +570,7 @@ export default function DirectVideoActionPage() {
                   </Definition>
 
                   <div className="my-8">
-                    <div className="border border-[#E2E2E6] rounded-2xl overflow-hidden">
+                    <div className="border border-[var(--border)] rounded-2xl overflow-hidden">
                       <Image
                         src="/assets/images/research/dva_inference_flowchart.webp"
                         alt="Leapfrog Inference flowchart"
@@ -610,11 +610,11 @@ export default function DirectVideoActionPage() {
               DATA-EFFICIENT LONG-HORIZON TASK LEARNING
               ================================================================ */}
           <section id="figure-3">
-            <div className="w-10 h-[3px] bg-[#C45230] mb-6 rounded-full" />
-            <h2 className="text-3xl md:text-[2.25rem] lg:text-[2.5rem] font-sans font-bold leading-tight tracking-tight text-[#2C2C2E] mb-8">
+            <div className="w-10 h-[3px] bg-[var(--accent)] mb-6 rounded-full" />
+            <h2 className="text-3xl md:text-[2.25rem] lg:text-[2.5rem] font-sans font-bold leading-tight tracking-tight text-[var(--text)] mb-8">
               Data-Efficient Long-Horizon Task Learning
             </h2>
-            <div className="space-y-6 text-base leading-[1.85] text-[#6B6B74]">
+            <div className="space-y-6 text-base leading-[1.85] text-[var(--text-muted)]">
               <p>
                 One of the most striking properties of DVA models is their data
                 efficiency. Because the causal video backbone already understands
@@ -627,10 +627,10 @@ export default function DirectVideoActionPage() {
 
               {/* ── Decanting ── */}
               <section id="decanting" className="pt-12">
-                <h3 className="text-2xl md:text-[1.75rem] lg:text-[2rem] font-sans font-bold leading-tight tracking-tight text-[#2C2C2E] mb-6">
+                <h3 className="text-2xl md:text-[1.75rem] lg:text-[2rem] font-sans font-bold leading-tight tracking-tight text-[var(--text)] mb-6">
                   Decanting
                 </h3>
-                <div className="space-y-6 text-base leading-[1.85] text-[#6B6B74]">
+                <div className="space-y-6 text-base leading-[1.85] text-[var(--text-muted)]">
                   <p>
                     In the decanting task, the robot must unpack bearings from
                     shipping containers and sort the packaging materials into
@@ -657,7 +657,7 @@ export default function DirectVideoActionPage() {
                     </VideoCaption>
                   </div>
 
-                  <h4 className="text-xl font-sans font-bold text-[#2C2C2E] mt-10 mb-4">
+                  <h4 className="text-xl font-sans font-bold text-[var(--text)] mt-10 mb-4">
                     Edge Cases
                   </h4>
                   <p>
@@ -686,10 +686,10 @@ export default function DirectVideoActionPage() {
 
               {/* ── Container Breakdown ── */}
               <section id="video-3" className="pt-12">
-                <h3 className="text-2xl md:text-[1.75rem] lg:text-[2rem] font-sans font-bold leading-tight tracking-tight text-[#2C2C2E] mb-6">
+                <h3 className="text-2xl md:text-[1.75rem] lg:text-[2rem] font-sans font-bold leading-tight tracking-tight text-[var(--text)] mb-6">
                   Container Breakdown
                 </h3>
-                <div className="space-y-6 text-base leading-[1.85] text-[#6B6B74]">
+                <div className="space-y-6 text-base leading-[1.85] text-[var(--text-muted)]">
                   <p>
                     In the container breakdown task, the robot must disassemble
                     industrial shipping containers &mdash; a physically demanding
@@ -715,7 +715,7 @@ export default function DirectVideoActionPage() {
                     </VideoCaption>
                   </div>
 
-                  <h4 className="text-xl font-sans font-bold text-[#2C2C2E] mt-10 mb-4">
+                  <h4 className="text-xl font-sans font-bold text-[var(--text)] mt-10 mb-4">
                     Edge Cases
                   </h4>
                   <p>
@@ -743,11 +743,11 @@ export default function DirectVideoActionPage() {
               LONG-CONTEXT VISUAL MEMORY
               ================================================================ */}
           <section id="video-4">
-            <div className="w-10 h-[3px] bg-[#C45230] mb-6 rounded-full" />
-            <h2 className="text-3xl md:text-[2.25rem] lg:text-[2.5rem] font-sans font-bold leading-tight tracking-tight text-[#2C2C2E] mb-8">
+            <div className="w-10 h-[3px] bg-[var(--accent)] mb-6 rounded-full" />
+            <h2 className="text-3xl md:text-[2.25rem] lg:text-[2.5rem] font-sans font-bold leading-tight tracking-tight text-[var(--text)] mb-8">
               Long-Context Visual Memory
             </h2>
-            <div className="space-y-6 text-base leading-[1.85] text-[#6B6B74]">
+            <div className="space-y-6 text-base leading-[1.85] text-[var(--text-muted)]">
               <p>
                 Because our causal video model processes long, noise-free context
                 windows, DVA policies can remember and reason over events that
@@ -763,10 +763,10 @@ export default function DirectVideoActionPage() {
 
               {/* ── Shell Game ── */}
               <section id="let-s-play-the-shell-game" className="pt-12">
-                <h3 className="text-2xl md:text-[1.75rem] lg:text-[2rem] font-sans font-bold leading-tight tracking-tight text-[#2C2C2E] mb-6">
+                <h3 className="text-2xl md:text-[1.75rem] lg:text-[2rem] font-sans font-bold leading-tight tracking-tight text-[var(--text)] mb-6">
                   Let&rsquo;s Play the Shell Game
                 </h3>
-                <div className="space-y-6 text-base leading-[1.85] text-[#6B6B74]">
+                <div className="space-y-6 text-base leading-[1.85] text-[var(--text-muted)]">
                   <div className="my-8">
                     <VimeoEmbed
                       id="1172144555"
@@ -787,10 +787,10 @@ export default function DirectVideoActionPage() {
 
               {/* ── Returns Processing ── */}
               <section id="video-5" className="pt-12">
-                <h3 className="text-2xl md:text-[1.75rem] lg:text-[2rem] font-sans font-bold leading-tight tracking-tight text-[#2C2C2E] mb-6">
+                <h3 className="text-2xl md:text-[1.75rem] lg:text-[2rem] font-sans font-bold leading-tight tracking-tight text-[var(--text)] mb-6">
                   Resolving Visual Ambiguity in Returns Processing
                 </h3>
-                <div className="space-y-6 text-base leading-[1.85] text-[#6B6B74]">
+                <div className="space-y-6 text-base leading-[1.85] text-[var(--text-muted)]">
                   <div className="my-8">
                     <VimeoEmbed
                       id="1172141182"
@@ -830,11 +830,11 @@ export default function DirectVideoActionPage() {
               ONE-SHOT HUMAN DEMO FOLLOWING: ITEM SORTING
               ================================================================ */}
           <section id="video-6">
-            <div className="w-10 h-[3px] bg-[#C45230] mb-6 rounded-full" />
-            <h2 className="text-3xl md:text-[2.25rem] lg:text-[2.5rem] font-sans font-bold leading-tight tracking-tight text-[#2C2C2E] mb-8">
+            <div className="w-10 h-[3px] bg-[var(--accent)] mb-6 rounded-full" />
+            <h2 className="text-3xl md:text-[2.25rem] lg:text-[2.5rem] font-sans font-bold leading-tight tracking-tight text-[var(--text)] mb-8">
               One-Shot Human Demo Following: Item Sorting
             </h2>
-            <div className="space-y-6 text-base leading-[1.85] text-[#6B6B74]">
+            <div className="space-y-6 text-base leading-[1.85] text-[var(--text-muted)]">
               <div className="my-8">
                 <VimeoEmbed
                   id="1172145096"
@@ -857,7 +857,7 @@ export default function DirectVideoActionPage() {
                     hash="2d241097b9"
                     title="Novel objects/containers"
                   />
-                  <p className="mt-1.5 text-[13px] text-[#6B6B74]">
+                  <p className="mt-1.5 text-[13px] text-[var(--text-muted)]">
                     Novel objects/containers
                   </p>
                 </div>
@@ -867,7 +867,7 @@ export default function DirectVideoActionPage() {
                     hash="d276dffd5e"
                     title="Food packing"
                   />
-                  <p className="mt-1.5 text-[13px] text-[#6B6B74]">
+                  <p className="mt-1.5 text-[13px] text-[var(--text-muted)]">
                     Food packing
                   </p>
                 </div>
@@ -877,7 +877,7 @@ export default function DirectVideoActionPage() {
                     hash="241a286553"
                     title="Continuous correction"
                   />
-                  <p className="mt-1.5 text-[13px] text-[#6B6B74]">
+                  <p className="mt-1.5 text-[13px] text-[var(--text-muted)]">
                     Continuous correction
                   </p>
                 </div>
@@ -889,11 +889,11 @@ export default function DirectVideoActionPage() {
               ONE-SHOT HUMAN DEMO FOLLOWING: DRAWING
               ================================================================ */}
           <section id="video-8">
-            <div className="w-10 h-[3px] bg-[#C45230] mb-6 rounded-full" />
-            <h2 className="text-3xl md:text-[2.25rem] lg:text-[2.5rem] font-sans font-bold leading-tight tracking-tight text-[#2C2C2E] mb-8">
+            <div className="w-10 h-[3px] bg-[var(--accent)] mb-6 rounded-full" />
+            <h2 className="text-3xl md:text-[2.25rem] lg:text-[2.5rem] font-sans font-bold leading-tight tracking-tight text-[var(--text)] mb-8">
               One-Shot Human Demo Following: Drawing
             </h2>
-            <div className="space-y-6 text-base leading-[1.85] text-[#6B6B74]">
+            <div className="space-y-6 text-base leading-[1.85] text-[var(--text-muted)]">
               <div className="my-8">
                 <VimeoEmbed
                   id="1172144824"
@@ -916,11 +916,11 @@ export default function DirectVideoActionPage() {
               INTERPRETABILITY THROUGH VIDEO GENERATION
               ================================================================ */}
           <section id="video-9">
-            <div className="w-10 h-[3px] bg-[#C45230] mb-6 rounded-full" />
-            <h2 className="text-3xl md:text-[2.25rem] lg:text-[2.5rem] font-sans font-bold leading-tight tracking-tight text-[#2C2C2E] mb-8">
+            <div className="w-10 h-[3px] bg-[var(--accent)] mb-6 rounded-full" />
+            <h2 className="text-3xl md:text-[2.25rem] lg:text-[2.5rem] font-sans font-bold leading-tight tracking-tight text-[var(--text)] mb-8">
               Interpretability through Video Generation
             </h2>
-            <div className="space-y-6 text-base leading-[1.85] text-[#6B6B74]">
+            <div className="space-y-6 text-base leading-[1.85] text-[var(--text-muted)]">
               <p>
                 A unique advantage of placing a video generation model at the
                 core of a robot policy is interpretability. Because the causal
@@ -941,7 +941,7 @@ export default function DirectVideoActionPage() {
                     hash="f96c728dc4"
                     title="Interpretability: Decanting"
                   />
-                  <p className="mt-1.5 text-[13px] text-[#6B6B74]">Decanting</p>
+                  <p className="mt-1.5 text-[13px] text-[var(--text-muted)]">Decanting</p>
                 </div>
                 <div>
                   <SmallVimeoEmbed
@@ -949,7 +949,7 @@ export default function DirectVideoActionPage() {
                     hash="3ca5789fc3"
                     title="Interpretability: Returns"
                   />
-                  <p className="mt-1.5 text-[13px] text-[#6B6B74]">Returns</p>
+                  <p className="mt-1.5 text-[13px] text-[var(--text-muted)]">Returns</p>
                 </div>
                 <div>
                   <SmallVimeoEmbed
@@ -957,7 +957,7 @@ export default function DirectVideoActionPage() {
                     hash="852196333e"
                     title="Interpretability: Container"
                   />
-                  <p className="mt-1.5 text-[13px] text-[#6B6B74]">Container</p>
+                  <p className="mt-1.5 text-[13px] text-[var(--text-muted)]">Container</p>
                 </div>
               </div>
               <VideoCaption num={10}>
@@ -990,11 +990,11 @@ export default function DirectVideoActionPage() {
               WHAT'S NEXT?
               ================================================================ */}
           <section id="video-10">
-            <div className="w-10 h-[3px] bg-[#C45230] mb-6 rounded-full" />
-            <h2 className="text-3xl md:text-[2.25rem] lg:text-[2.5rem] font-sans font-bold leading-tight tracking-tight text-[#2C2C2E] mb-8">
+            <div className="w-10 h-[3px] bg-[var(--accent)] mb-6 rounded-full" />
+            <h2 className="text-3xl md:text-[2.25rem] lg:text-[2.5rem] font-sans font-bold leading-tight tracking-tight text-[var(--text)] mb-8">
               What&rsquo;s next?
             </h2>
-            <div className="space-y-6 text-base leading-[1.85] text-[#6B6B74]">
+            <div className="space-y-6 text-base leading-[1.85] text-[var(--text-muted)]">
               <p>
                 We believe video-based foundation models represent the most
                 promising pathway toward physical AGI &mdash; systems that can
@@ -1019,7 +1019,7 @@ export default function DirectVideoActionPage() {
                 reach out at{" "}
                 <a
                   href="mailto:research@rhoda.ai"
-                  className="text-[#C45230] underline underline-offset-4 hover:opacity-80 transition-opacity"
+                  className="text-[var(--accent)] underline underline-offset-4 hover:opacity-80 transition-opacity"
                 >
                   research@rhoda.ai
                 </a>
@@ -1032,7 +1032,7 @@ export default function DirectVideoActionPage() {
               CITATION
               ================================================================ */}
           <section className="pt-4">
-            <pre className="bg-[#F7F6F3] rounded-lg p-6 text-sm text-[#6B6B74] font-mono overflow-x-auto leading-relaxed whitespace-pre-wrap" style={{ borderLeft: "3px solid #C45230" }}>
+            <pre className="bg-[var(--surface)] rounded-lg p-6 text-sm text-[var(--text-muted)] font-mono overflow-x-auto leading-relaxed whitespace-pre-wrap" style={{ borderLeft: "3px solid var(--accent)" }}>
 {`@article{rhoda2026dva,
     author = {Rhoda AI Team},
     title = {Causal Video Models Are Data-Efficient Robot Policy Learners},
