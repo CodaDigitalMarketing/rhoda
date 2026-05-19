@@ -222,10 +222,13 @@ export default function Home() {
               <h2 style={{ color: "var(--text)" }}>A path to physical AGI</h2>
             </FadeIn>
 
-            {/* Video — full width, elevated with shadow */}
+            {/* Video — slightly narrower, elevated with shadow */}
             <FadeIn>
               <div
                 style={{
+                  maxWidth: 1080,
+                  marginLeft: "auto",
+                  marginRight: "auto",
                   borderRadius: 12,
                   overflow: "hidden",
                   boxShadow: "0 12px 48px rgba(226, 101, 46, 0.15), 0 4px 16px rgba(0,0,0,0.06)",
@@ -267,49 +270,31 @@ export default function Home() {
               </div>
             </FadeIn>
 
-            {/* Stats — two cards side by side */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6" style={{ marginTop: 48 }}>
+            {/* Stats — two side by side, no cards */}
+            <div className="flex flex-col sm:flex-row justify-center gap-40" style={{ marginTop: 48 }}>
               <FadeIn delay={1}>
-                <div
-                  style={{
-                    background: "var(--surface)",
-                    borderRadius: 12,
-                    padding: "40px 36px",
-                    border: "1px solid var(--border)",
-                    borderTop: "3px solid var(--accent)",
-                    boxShadow: "var(--image-shadow)",
-                  }}
-                >
-                  <p style={{ fontSize: 11, fontWeight: 600, letterSpacing: "0.15em", textTransform: "uppercase", color: "var(--accent)", marginBottom: 16 }}>
+                <div>
+                  <p style={{ fontSize: 9, fontWeight: 600, letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--accent)", marginBottom: 10 }}>
                     PRE-TRAINING
                   </p>
                   <div style={{ display: "flex", alignItems: "baseline" }}>
-                    <span style={{ color: "#f26522", fontSize: 90, fontWeight: 600, lineHeight: 1 }}>300+</span>
-                    <span style={{ fontSize: 24, color: "var(--text)", marginLeft: 12 }}>Years</span>
+                    <span style={{ color: "#f26522", fontSize: 60, fontWeight: 600, lineHeight: 1 }}>300+</span>
+                    <span style={{ fontSize: 19, color: "var(--text)", marginLeft: 9 }}>Years</span>
                   </div>
-                  <p style={{ fontSize: 15, color: "var(--text-muted)", marginTop: 12, lineHeight: 1.6 }}>of web-scale video data</p>
+                  <p style={{ fontSize: 13, color: "var(--text-muted)", marginTop: 6, lineHeight: 1.5 }}>of web-scale video data</p>
                 </div>
               </FadeIn>
 
               <FadeIn delay={2}>
-                <div
-                  style={{
-                    background: "var(--surface)",
-                    borderRadius: 12,
-                    padding: "40px 36px",
-                    border: "1px solid var(--border)",
-                    borderTop: "3px solid var(--accent)",
-                    boxShadow: "var(--image-shadow)",
-                  }}
-                >
-                  <p style={{ fontSize: 11, fontWeight: 600, letterSpacing: "0.15em", textTransform: "uppercase", color: "var(--accent)", marginBottom: 16 }}>
+                <div>
+                  <p style={{ fontSize: 9, fontWeight: 600, letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--accent)", marginBottom: 10 }}>
                     POST-TRAINING
                   </p>
                   <div style={{ display: "flex", alignItems: "baseline" }}>
-                    <span style={{ color: "#f26522", fontSize: 90, fontWeight: 600, lineHeight: 1 }}>10-20</span>
-                    <span style={{ fontSize: 24, color: "var(--text)", marginLeft: 12 }}>Hours</span>
+                    <span style={{ color: "#f26522", fontSize: 60, fontWeight: 600, lineHeight: 1 }}>10-20</span>
+                    <span style={{ fontSize: 19, color: "var(--text)", marginLeft: 9 }}>Hours</span>
                   </div>
-                  <p style={{ fontSize: 15, color: "var(--text-muted)", marginTop: 12, lineHeight: 1.6 }}>trajectory data</p>
+                  <p style={{ fontSize: 13, color: "var(--text-muted)", marginTop: 6, lineHeight: 1.5 }}>trajectory data</p>
                 </div>
               </FadeIn>
             </div>
