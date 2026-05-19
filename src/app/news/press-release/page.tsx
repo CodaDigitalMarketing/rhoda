@@ -49,14 +49,15 @@ export default function PressReleasePage() {
           {/* Hero Image */}
           <FadeIn>
             <div className="relative w-full aspect-video rounded-[12px] overflow-hidden mb-12">
-            <Image
-              src="/assets/images/home/robot-decant.webp"
-              alt="Rhoda AI robot performing a task"
-              fill
-              className="object-cover"
-              priority
-            />
-          </div>
+              <Image
+                src="/assets/images/home/robot-decant.webp"
+                alt="Rhoda AI robot performing a task"
+                fill
+                className="object-cover"
+                priority
+              />
+            </div>
+          </FadeIn>
 
           {/* Dateline + Opening */}
           <p style={{ fontSize: 18, lineHeight: 1.85, color: "#6B6B74" }}>
