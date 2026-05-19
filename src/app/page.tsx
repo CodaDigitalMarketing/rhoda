@@ -193,74 +193,127 @@ export default function Home() {
         </section>
 
         {/* ── FutureVision / DVA ── */}
-        <section style={{ paddingTop: 32, paddingBottom: 96 }}>
-          <FadeIn>
-            <div style={{ background: "#FDF0EB", borderRadius: 12, margin: "0 8px", padding: 64 }}>
-              <div className="rhoda-container" style={{ padding: 0 }}>
-                <div className="flex flex-col md:flex-row gap-12">
-                  <div className="md:w-5/12">
-                    <h2 style={{ color: "#1A1A1F" }}>A path to physical AGI</h2>
-                    <p className="mt-6" style={{ lineHeight: 1.7, color: "#6B6B74" }}>
-                      <strong style={{ color: "#1A1A1F" }}>FutureVision</strong>{" "}
-                      brings the capability to handle real world industrial tasks
-                      autonomously. This unlocks generalization that conventional
-                      VLA pipelines struggle to achieve. We call this the Direct
-                      Video Action model. And it&apos;s why Rhoda works not just in
-                      labs but in factories, warehouses, and real production
-                      environments.
-                    </p>
-                  </div>
-                  <div className="md:w-7/12">
-                    <div className="relative w-full" style={{ paddingBottom: "56.25%" }}>
-                      <iframe
-                        className="absolute inset-0 w-full h-full"
-                        style={{ borderRadius: 12 }}
-                        src="https://player.vimeo.com/video/1171533206?h=f243fe4206&autoplay=1&loop=1&title=0&byline=0&portrait=0&controls=0&muted=1"
-                        frameBorder="0"
-                        allow="autoplay; fullscreen"
-                      />
-                    </div>
-                  </div>
+        <section style={{ paddingTop: 48, paddingBottom: 96 }}>
+          <div className="rhoda-container">
+
+            {/* Section label */}
+            <FadeIn className="text-center" style={{ marginBottom: 48 }}>
+              <p style={{ color: "#E2652E", fontSize: 12, fontWeight: 600, letterSpacing: "0.2em", textTransform: "uppercase", marginBottom: 16 }}>
+                OUR APPROACH
+              </p>
+              <h2 style={{ color: "#1A1A1F" }}>A path to physical AGI</h2>
+            </FadeIn>
+
+            {/* Video — full width, elevated with shadow */}
+            <FadeIn>
+              <div
+                style={{
+                  borderRadius: 12,
+                  overflow: "hidden",
+                  boxShadow: "0 12px 48px rgba(226, 101, 46, 0.15), 0 4px 16px rgba(0,0,0,0.06)",
+                  position: "relative",
+                }}
+              >
+                <div style={{ position: "relative", width: "100%", aspectRatio: "16 / 9" }}>
+                  <iframe
+                    className="absolute inset-0 w-full h-full"
+                    src="https://player.vimeo.com/video/1171533206?h=f243fe4206&autoplay=1&loop=1&title=0&byline=0&portrait=0&controls=0&muted=1"
+                    frameBorder="0"
+                    allow="autoplay; fullscreen"
+                  />
                 </div>
-
-                {/* Stats row */}
-                <div className="flex flex-col sm:flex-row gap-12" style={{ marginTop: 48, paddingTop: 48, borderTop: "1px solid #E2E2E6" }}>
-                  <FadeIn style={{ flex: 1 }}>
-                    <p style={{ fontSize: 12, fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: "#6B6B74", marginBottom: 12 }}>
-                      PRE-TRAINING
-                    </p>
-                    <div style={{ display: "flex", alignItems: "baseline" }}>
-                      <span style={{ color: "#f26522", fontSize: 90, fontWeight: 600, lineHeight: 1 }}>300+</span>
-                      <span style={{ fontSize: 24, color: "#1A1A1F", marginLeft: 12 }}>Years</span>
-                    </div>
-                    <p style={{ fontSize: 15, color: "#6B6B74", marginTop: 8 }}>of web-scale video data</p>
-                  </FadeIn>
-
-                  <FadeIn delay={2} style={{ flex: 1 }}>
-                    <p style={{ fontSize: 12, fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: "#6B6B74", marginBottom: 12 }}>
-                      POST-TRAINING
-                    </p>
-                    <div style={{ display: "flex", alignItems: "baseline" }}>
-                      <span style={{ color: "#f26522", fontSize: 90, fontWeight: 600, lineHeight: 1 }}>10-20</span>
-                      <span style={{ fontSize: 24, color: "#1A1A1F", marginLeft: 12 }}>Hours</span>
-                    </div>
-                    <p style={{ fontSize: 15, color: "#6B6B74", marginTop: 8 }}>trajectory data</p>
-                  </FadeIn>
-                </div>
-
-                <FadeIn>
-                  <p className="mx-auto" style={{ lineHeight: 1.7, color: "#6B6B74", maxWidth: 700, marginTop: 48, textAlign: "center" }}>
-                    We first pre-train our model with over a million videos,
-                    giving it a strong prior on motion, physics, and dynamics. We
-                    then post-train on action data collected on the robot to
-                    teach the model to learn specific tasks. This combination of
-                    pre- and post-training creates generalist robot policies that
-                    can work and adapt in dynamic environments.
-                  </p>
-                </FadeIn>
               </div>
+            </FadeIn>
+
+            {/* Description — below the video, with accent line */}
+            <FadeIn>
+              <div
+                style={{
+                  maxWidth: 720,
+                  margin: "40px auto 0",
+                  display: "flex",
+                  gap: 24,
+                  alignItems: "stretch",
+                }}
+              >
+                <div style={{ width: 3, flexShrink: 0, borderRadius: 2, background: "linear-gradient(180deg, #E2652E 0%, #F07A45 100%)" }} />
+                <p style={{ lineHeight: 1.8, color: "#6B6B74", fontSize: 17 }}>
+                  <strong style={{ color: "#1A1A1F" }}>FutureVision</strong>{" "}
+                  brings the capability to handle real world industrial tasks
+                  autonomously. This unlocks generalization that conventional
+                  VLA pipelines struggle to achieve. We call this the Direct
+                  Video Action model. And it&apos;s why Rhoda works not just in
+                  labs but in factories, warehouses, and real production
+                  environments.
+                </p>
+              </div>
+            </FadeIn>
+
+            {/* Stats — two cards side by side */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6" style={{ marginTop: 48 }}>
+              <FadeIn delay={1}>
+                <div
+                  style={{
+                    background: "#FFFFFF",
+                    borderRadius: 12,
+                    padding: "40px 36px",
+                    border: "1px solid #E2E2E6",
+                    borderTop: "3px solid #E2652E",
+                    boxShadow: "0 4px 20px rgba(226, 101, 46, 0.08)",
+                  }}
+                >
+                  <p style={{ fontSize: 11, fontWeight: 600, letterSpacing: "0.15em", textTransform: "uppercase", color: "#E2652E", marginBottom: 16 }}>
+                    PRE-TRAINING
+                  </p>
+                  <div style={{ display: "flex", alignItems: "baseline" }}>
+                    <span style={{ color: "#f26522", fontSize: 90, fontWeight: 600, lineHeight: 1 }}>300+</span>
+                    <span style={{ fontSize: 24, color: "#1A1A1F", marginLeft: 12 }}>Years</span>
+                  </div>
+                  <p style={{ fontSize: 15, color: "#6B6B74", marginTop: 12, lineHeight: 1.6 }}>of web-scale video data</p>
+                </div>
+              </FadeIn>
+
+              <FadeIn delay={2}>
+                <div
+                  style={{
+                    background: "#FFFFFF",
+                    borderRadius: 12,
+                    padding: "40px 36px",
+                    border: "1px solid #E2E2E6",
+                    borderTop: "3px solid #E2652E",
+                    boxShadow: "0 4px 20px rgba(226, 101, 46, 0.08)",
+                  }}
+                >
+                  <p style={{ fontSize: 11, fontWeight: 600, letterSpacing: "0.15em", textTransform: "uppercase", color: "#E2652E", marginBottom: 16 }}>
+                    POST-TRAINING
+                  </p>
+                  <div style={{ display: "flex", alignItems: "baseline" }}>
+                    <span style={{ color: "#f26522", fontSize: 90, fontWeight: 600, lineHeight: 1 }}>10-20</span>
+                    <span style={{ fontSize: 24, color: "#1A1A1F", marginLeft: 12 }}>Hours</span>
+                  </div>
+                  <p style={{ fontSize: 15, color: "#6B6B74", marginTop: 12, lineHeight: 1.6 }}>trajectory data</p>
+                </div>
+              </FadeIn>
             </div>
-          </FadeIn>
+
+            {/* Bottom paragraph */}
+            <FadeIn>
+              <div style={{ display: "flex", alignItems: "center", gap: 20, marginTop: 48, marginBottom: 32 }}>
+                <div style={{ flex: 1, height: 1, backgroundColor: "#E2E2E6" }} />
+                <div style={{ width: 8, height: 8, borderRadius: "50%", backgroundColor: "#E2652E" }} />
+                <div style={{ flex: 1, height: 1, backgroundColor: "#E2E2E6" }} />
+              </div>
+              <p className="mx-auto" style={{ lineHeight: 1.8, color: "#6B6B74", maxWidth: 700, textAlign: "center", fontSize: 17 }}>
+                We first pre-train our model with over a million videos,
+                giving it a strong prior on motion, physics, and dynamics. We
+                then post-train on action data collected on the robot to
+                teach the model to learn specific tasks. This combination of
+                pre- and post-training creates generalist robot policies that
+                can work and adapt in dynamic environments.
+              </p>
+            </FadeIn>
+
+          </div>
         </section>
 
         {/* ── Research Demos ── */}
@@ -356,15 +409,20 @@ export default function Home() {
           <div className="rhoda-container">
             <FadeIn className="text-center">
               <h2 style={{ color: "#1A1A1F" }}>Commercial Applications</h2>
-              <p className="mx-auto mt-8" style={{ maxWidth: 700, lineHeight: 1.7, color: "#6B6B74" }}>
+              <p className="mx-auto mt-6" style={{ maxWidth: 620, lineHeight: 1.7, color: "#6B6B74" }}>
                 We work with a variety of customers across verticals in
                 automotive, manufacturing, logistics, and ecommerce. If
                 you&apos;re interested in working with us at your facility,
                 reach out here.
               </p>
+              <div style={{ display: "flex", alignItems: "center", gap: 20, marginTop: 32, maxWidth: 400, marginLeft: "auto", marginRight: "auto" }}>
+                <div style={{ flex: 1, height: 1, backgroundColor: "#E2E2E6" }} />
+                <div style={{ width: 8, height: 8, borderRadius: "50%", backgroundColor: "#E2652E" }} />
+                <div style={{ flex: 1, height: 1, backgroundColor: "#E2E2E6" }} />
+              </div>
             </FadeIn>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-16">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-10 mt-16">
               {[
                 { src: "/assets/images/services/Automotive.jpg", alt: "car manufacturing plant line", label: "Automotive" },
                 { src: "/assets/images/services/Manufacturing.jpg", alt: "manufacturing robots", label: "Manufacturing" },
@@ -372,12 +430,14 @@ export default function Home() {
                 { src: "/assets/images/services/Ecommerce.jpg", alt: "warehouse with red rafters", label: "Ecommerce" },
               ].map((item, i) => (
                 <FadeIn key={item.src} delay={i + 1}>
-                  <div
-                    style={{ borderRadius: 12, overflow: "hidden", background: "#FFFFFF", border: "1px solid #E2E2E6", transition: "transform 0.3s ease, box-shadow 0.3s ease", cursor: "default" }}
-                    className="hover:scale-[1.02] hover:shadow-lg"
-                  >
+                  {/* Image */}
+                  <div style={{ borderRadius: 12, overflow: "hidden", boxShadow: "0 4px 20px rgba(226, 101, 46, 0.1)" }}>
                     <Image src={item.src} alt={item.alt} width={600} height={400} className="w-full h-auto" style={{ display: "block" }} />
-                    <p style={{ fontSize: 15, letterSpacing: "0.04em", color: "#1A1A1F", padding: "14px 20px", fontWeight: 500 }}>
+                  </div>
+                  {/* Label — separate, below */}
+                  <div style={{ display: "flex", alignItems: "center", gap: 10, marginTop: 14 }}>
+                    <div style={{ width: 20, height: 2, backgroundColor: "#E2652E", borderRadius: 1 }} />
+                    <p style={{ fontSize: 14, fontWeight: 500, letterSpacing: "0.06em", color: "#1A1A1F", textTransform: "uppercase" }}>
                       {item.label}
                     </p>
                   </div>
@@ -432,7 +492,7 @@ export default function Home() {
         </FadeIn>
 
         {/* ── Investors ── */}
-        <section style={{ paddingTop: 96, paddingBottom: 80 }}>
+        <section style={{ backgroundColor: "#ECECEC", paddingTop: 80, paddingBottom: 64, marginTop: 48 }}>
           <FadeIn className="text-center">
             <h3 style={{ color: "#1A1A1F" }}>Our Investors</h3>
           </FadeIn>
