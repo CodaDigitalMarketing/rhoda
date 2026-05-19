@@ -152,7 +152,7 @@ export default function TeamPage() {
         <div className="text-center" style={{ position: "relative", zIndex: 2, paddingTop: 160, paddingBottom: 80 }}>
           <FadeIn>
             <div style={{ width: 40, height: 3, backgroundColor: "#E2652E", borderRadius: 2, margin: "0 auto 28px" }} />
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold" style={{ color: "#E2652E" }}>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white">
               Engineering Intelligence
             </h1>
           </FadeIn>
