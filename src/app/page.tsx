@@ -6,6 +6,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import InvestorMarquee from "@/components/InvestorMarquee";
 import FadeIn from "@/components/FadeIn";
+import ImageShowcase from "@/components/ImageShowcase";
 
 const INVESTORS = [
   "B37", "Capricorn", "GIGA", "Hyperlink", "JohnDoerr", "Khosla",
@@ -73,36 +74,54 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ── Media Strip ── */}
-        <section style={{ paddingTop: 64, paddingBottom: 64 }}>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 6, padding: "0 8px" }}>
-            {[
-              { src: "/assets/images/home/robot-folding-clothes.jpg", alt: "robot folding clothes" },
-              { src: "/assets/images/home/robot-decant.webp", alt: "robot decanting" },
-              { src: "/assets/images/home/robot-pushing-down-rollers.jpg", alt: "robot pushing box on rollers" },
-            ].map((img, i) => (
-              <FadeIn key={img.src} delay={i + 1}>
-                <div style={{ position: "relative", aspectRatio: "4 / 3", overflow: "hidden", borderRadius: 12 }}>
-                  <Image src={img.src} alt={img.alt} fill className="object-cover" />
-                </div>
-              </FadeIn>
-            ))}
-          </div>
+        {/* ── Capabilities ── */}
+        <section style={{ paddingTop: 96, paddingBottom: 96 }}>
+          <div className="rhoda-container">
+            <FadeIn className="text-center" style={{ marginBottom: 64 }}>
+              <p style={{ color: "#E2652E", fontSize: 12, fontWeight: 600, letterSpacing: "0.2em", textTransform: "uppercase", marginBottom: 16 }}>
+                WHAT WE BUILD
+              </p>
+              <h2 style={{ color: "#1A1A1F" }}>Intelligence in action</h2>
+            </FadeIn>
 
-          <FadeIn className="rhoda-container" style={{ marginTop: 24 }}>
-            <div className="relative w-full" style={{ paddingBottom: "56.25%" }}>
-              <iframe
-                className="absolute inset-0 w-full h-full"
-                style={{ borderRadius: 12 }}
-                src="https://www.youtube.com/embed/tQRQ0NaJ6ZQ"
-                title="YouTube video player"
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                referrerPolicy="strict-origin-when-cross-origin"
-                allowFullScreen
-              />
+            {/* Three images side by side */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {[
+                { src: "/assets/images/home/robot-folding-clothes.jpg", alt: "robot folding clothes" },
+                { src: "/assets/images/home/robot-decant.webp", alt: "robot decanting" },
+                { src: "/assets/images/home/robot-pushing-down-rollers.jpg", alt: "robot pushing box on rollers" },
+              ].map((img, i) => (
+                <FadeIn key={img.src} delay={i + 1}>
+                  <div style={{ borderRadius: 12, overflow: "hidden", boxShadow: "0 4px 20px rgba(226, 101, 46, 0.12)" }}>
+                    <Image src={img.src} alt={img.alt} width={800} height={600} className="w-full h-auto" style={{ display: "block" }} />
+                  </div>
+                </FadeIn>
+              ))}
             </div>
-          </FadeIn>
+
+            {/* Divider */}
+            <div style={{ display: "flex", alignItems: "center", gap: 20, marginTop: 64, marginBottom: 48 }}>
+              <div style={{ flex: 1, height: 1, backgroundColor: "#E2E2E6" }} />
+              <div style={{ width: 8, height: 8, borderRadius: "50%", backgroundColor: "#E2652E" }} />
+              <div style={{ flex: 1, height: 1, backgroundColor: "#E2E2E6" }} />
+            </div>
+
+            {/* YouTube embed */}
+            <FadeIn>
+              <div className="relative w-full" style={{ paddingBottom: "56.25%" }}>
+                <iframe
+                  className="absolute inset-0 w-full h-full"
+                  style={{ borderRadius: 12 }}
+                  src="https://www.youtube.com/embed/tQRQ0NaJ6ZQ"
+                  title="YouTube video player"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  referrerPolicy="strict-origin-when-cross-origin"
+                  allowFullScreen
+                />
+              </div>
+            </FadeIn>
+          </div>
         </section>
 
         {/* ── FutureVision / DVA ── */}

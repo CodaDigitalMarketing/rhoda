@@ -44,32 +44,54 @@ const tocItems = [
 /* ------------------------------------------------------------------ */
 /*  Vimeo helper                                                      */
 /* ------------------------------------------------------------------ */
-function VimeoEmbed({ id, hash, title }: { id: string; hash: string; title?: string }) {
+function LazyVimeo({ id, hash, title, small = false }: { id: string; hash: string; title?: string; small?: boolean }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const [visible, setVisible] = useState(false);
+  const [loaded, setLoaded] = useState(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) { setVisible(true); observer.disconnect(); } },
+      { rootMargin: "200px" }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <div className="aspect-video w-full rounded-2xl overflow-hidden">
-      <iframe
-        src={`https://player.vimeo.com/video/${id}?h=${hash}&title=0&byline=0&portrait=0&vimeo_logo=0&dnt=1`}
-        className="w-full h-full"
-        allow="autoplay; fullscreen; picture-in-picture"
-        allowFullScreen
-        title={title || "Video embed"}
-      />
+    <div ref={ref} className={`aspect-video w-full ${small ? "rounded-xl" : "rounded-2xl"} overflow-hidden relative`} style={{ backgroundColor: "#F0EFEC" }}>
+      {/* Shimmer placeholder */}
+      {!loaded && (
+        <div className="absolute inset-0 flex items-center justify-center" style={{ background: "linear-gradient(90deg, #F0EFEC 25%, #E8E7E3 50%, #F0EFEC 75%)", backgroundSize: "200% 100%", animation: "shimmer 1.5s ease-in-out infinite" }}>
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" style={{ opacity: 0.3 }}>
+            <polygon points="5,3 19,12 5,21" fill="#6B6B74" />
+          </svg>
+        </div>
+      )}
+      {visible && (
+        <iframe
+          src={`https://player.vimeo.com/video/${id}?h=${hash}&title=0&byline=0&portrait=0&vimeo_logo=0&dnt=1`}
+          className="w-full h-full relative"
+          style={{ zIndex: 1 }}
+          allow="autoplay; fullscreen; picture-in-picture"
+          allowFullScreen
+          title={title || "Video embed"}
+          loading="lazy"
+          onLoad={() => setLoaded(true)}
+        />
+      )}
     </div>
   );
 }
 
+function VimeoEmbed({ id, hash, title }: { id: string; hash: string; title?: string }) {
+  return <LazyVimeo id={id} hash={hash} title={title} />;
+}
+
 function SmallVimeoEmbed({ id, hash, title }: { id: string; hash: string; title?: string }) {
-  return (
-    <div className="aspect-video w-full rounded-xl overflow-hidden">
-      <iframe
-        src={`https://player.vimeo.com/video/${id}?h=${hash}&title=0&byline=0&portrait=0&vimeo_logo=0&dnt=1`}
-        className="w-full h-full"
-        allow="autoplay; fullscreen; picture-in-picture"
-        allowFullScreen
-        title={title || "Video embed"}
-      />
-    </div>
-  );
+  return <LazyVimeo id={id} hash={hash} title={title} small />;
 }
 
 /* ------------------------------------------------------------------ */
