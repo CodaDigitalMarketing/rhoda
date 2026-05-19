@@ -12,10 +12,10 @@ export default function CareersPage() {
     <>
       <Navbar />
 
-      {/* Hero - Light Orange Tint Section */}
-      <div className="mx-2 bg-[var(--accent-subtle)] rounded-[12px]">
+      {/* Hero - Dark Section */}
+      <div className="bg-[#0C0C0F]">
         <div className="text-center pt-[180px] pb-[80px]">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[var(--text)]">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white">
             Build with us
           </h1>
         </div>

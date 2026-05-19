@@ -138,32 +138,28 @@ export default function TeamPage() {
     <>
       <Navbar />
 
-      {/* Hero - Light Orange Tint Section */}
-      <div className="mx-2 bg-[var(--accent-subtle)] rounded-[12px]">
-        <div className="text-center pt-[180px] pb-8">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[var(--text)]">
+      {/* Hero - Team photo background */}
+      <div style={{ position: "relative", minHeight: "70vh", display: "flex", alignItems: "center", justifyContent: "center", overflow: "hidden" }}>
+        <Image
+          src="/assets/images/team/rhoda-ai-team.webp"
+          alt="Rhoda AI team"
+          fill
+          className="object-cover"
+          priority
+          style={{ zIndex: 0 }}
+        />
+        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0.7) 50%, rgba(0,0,0,0.85) 100%)", zIndex: 1 }} />
+        <div className="text-center" style={{ position: "relative", zIndex: 2, paddingTop: 160, paddingBottom: 80 }}>
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white">
             Engineering Intelligence
           </h1>
           <p
-            className="mt-4 max-w-[600px] mx-auto text-[var(--text-muted)]"
-            style={{ fontSize: 18, lineHeight: "28px" }}
+            className="mt-4 max-w-[600px] mx-auto"
+            style={{ fontSize: 18, lineHeight: "28px", color: "rgba(255,255,255,0.6)" }}
           >
             A world-class team of researchers and engineers building the future of
             robotic intelligence.
           </p>
-        </div>
-
-        {/* Team Photo - inside hero section */}
-        <div className="rhoda-container px-6 pb-12">
-          <div className="relative w-full aspect-[21/9] rounded-[12px] overflow-hidden">
-            <Image
-              src="/assets/images/team/rhoda-ai-team.webp"
-              alt="Rhoda AI team"
-              fill
-              className="object-cover"
-              priority
-            />
-          </div>
         </div>
       </div>
 
