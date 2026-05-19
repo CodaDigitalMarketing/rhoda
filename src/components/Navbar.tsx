@@ -2,8 +2,8 @@
 
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { usePathname } from "next/navigation";
+import RhodaLogo from "@/components/RhodaLogo";
 
 const NAV_LINKS = [
   { href: "/", label: "Home" },
@@ -16,12 +16,15 @@ const NAV_LINKS = [
 export default function Navbar() {
   const [hidden, setHidden] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const lastScrollY = useRef(0);
   const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
       const currentY = window.scrollY;
+
+      // Hide/show on scroll direction
       if (currentY < 10) setHidden(false);
       else if (currentY < lastScrollY.current) setHidden(false);
       else if (currentY > lastScrollY.current) {
@@ -29,12 +32,25 @@ export default function Navbar() {
         setMobileOpen(false);
       }
       lastScrollY.current = currentY;
+
+      // Switch style once past the hero (roughly viewport height)
+      setScrolled(currentY > window.innerHeight * 0.8);
     };
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   useEffect(() => { setMobileOpen(false); }, [pathname]);
+
+  // Only the homepage has the dark video hero
+  const hasDarkHero = pathname === "/";
+  const isOverHero = hasDarkHero && !scrolled;
+
+  // Colors based on whether we're over the hero or not
+  const textColor = isOverHero ? "#FFFFFF" : "#1A1A1F";
+  const mutedColor = isOverHero ? "rgba(255,255,255,0.15)" : "rgba(0,0,0,0.1)";
+  const hamburgerColor = isOverHero ? "#FFFFFF" : "#1A1A1F";
+  const hoverColor = "#E2652E";
 
   return (
     <nav
@@ -55,26 +71,21 @@ export default function Navbar() {
           margin: "0 auto",
           padding: "14px 28px",
           borderRadius: 14,
-          backgroundColor: "rgba(255, 255, 255, 0.95)",
+          backgroundColor: isOverHero ? "rgba(255, 255, 255, 0.08)" : "rgba(255, 255, 255, 0.95)",
           backdropFilter: "blur(20px)",
           WebkitBackdropFilter: "blur(20px)",
-          border: "1px solid rgba(0, 0, 0, 0.08)",
-          boxShadow: "0 2px 16px rgba(0, 0, 0, 0.06)",
+          border: isOverHero ? "1px solid rgba(255, 255, 255, 0.12)" : "1px solid rgba(0, 0, 0, 0.08)",
+          boxShadow: isOverHero ? "none" : "0 2px 16px rgba(0, 0, 0, 0.06)",
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
           flexWrap: "wrap",
+          transition: "background-color 0.4s ease, border 0.4s ease, box-shadow 0.4s ease",
         }}
       >
         {/* Logo */}
         <Link href="/" style={{ flexShrink: 0, lineHeight: 0 }}>
-          <Image
-            src="/assets/images/logo/rhoda-logo-light.svg"
-            alt="rhoda Ai"
-            width={130}
-            height={34}
-            priority
-          />
+          <RhodaLogo textColor={isOverHero ? "#FFFFFF" : "#231f20"} />
         </Link>
 
         {/* Mobile hamburger */}
@@ -84,7 +95,7 @@ export default function Navbar() {
           style={{
             display: "none",
             background: "none",
-            border: "1px solid rgba(0, 0, 0, 0.1)",
+            border: `1px solid ${mutedColor}`,
             borderRadius: 6,
             padding: "6px 10px",
             cursor: "pointer",
@@ -97,9 +108,9 @@ export default function Navbar() {
           }}
           className="navbar-toggler-btn"
         >
-          <span style={{ display: "block", width: 22, height: 2, backgroundColor: "#1A1A1F", borderRadius: 1, transition: "transform 0.2s", transform: mobileOpen ? "rotate(45deg) translate(2.5px,2.5px)" : "none" }} />
-          <span style={{ display: "block", width: 22, height: 2, backgroundColor: "#1A1A1F", borderRadius: 1, transition: "opacity 0.2s", opacity: mobileOpen ? 0 : 1 }} />
-          <span style={{ display: "block", width: 22, height: 2, backgroundColor: "#1A1A1F", borderRadius: 1, transition: "transform 0.2s", transform: mobileOpen ? "rotate(-45deg) translate(2.5px,-2.5px)" : "none" }} />
+          <span style={{ display: "block", width: 22, height: 2, backgroundColor: hamburgerColor, borderRadius: 1, transition: "transform 0.2s, background-color 0.4s", transform: mobileOpen ? "rotate(45deg) translate(2.5px,2.5px)" : "none" }} />
+          <span style={{ display: "block", width: 22, height: 2, backgroundColor: hamburgerColor, borderRadius: 1, transition: "opacity 0.2s, background-color 0.4s", opacity: mobileOpen ? 0 : 1 }} />
+          <span style={{ display: "block", width: 22, height: 2, backgroundColor: hamburgerColor, borderRadius: 1, transition: "transform 0.2s, background-color 0.4s", transform: mobileOpen ? "rotate(-45deg) translate(2.5px,-2.5px)" : "none" }} />
         </button>
 
         {/* Desktop nav links + CTA */}
@@ -112,7 +123,7 @@ export default function Navbar() {
                   style={{
                     fontSize: 14,
                     fontWeight: 400,
-                    color: "#1A1A1F",
+                    color: textColor,
                     textDecoration: "none",
                     padding: "8px 18px",
                     display: "block",
@@ -120,8 +131,8 @@ export default function Navbar() {
                     lineHeight: 1.5,
                     transition: "color 0.2s",
                   }}
-                  onMouseEnter={(e) => (e.currentTarget.style.color = "#E2652E")}
-                  onMouseLeave={(e) => (e.currentTarget.style.color = "#1A1A1F")}
+                  onMouseEnter={(e) => (e.currentTarget.style.color = hoverColor)}
+                  onMouseLeave={(e) => (e.currentTarget.style.color = textColor)}
                 >
                   {link.label}
                 </Link>
@@ -155,21 +166,21 @@ export default function Navbar() {
 
         {/* Mobile menu */}
         {mobileOpen && (
-          <ul className="navbar-mobile-links" style={{ width: "100%", listStyle: "none", margin: 0, padding: "12px 0 4px", borderTop: "1px solid rgba(0, 0, 0, 0.08)", marginTop: 14 }}>
+          <ul className="navbar-mobile-links" style={{ width: "100%", listStyle: "none", margin: 0, padding: "12px 0 4px", borderTop: `1px solid ${mutedColor}`, marginTop: 14 }}>
             {NAV_LINKS.map((link) => (
               <li key={link.href}>
                 <Link
                   href={link.href}
                   style={{
                     fontSize: 15,
-                    color: "#1A1A1F",
+                    color: textColor,
                     textDecoration: "none",
                     padding: "10px 0",
                     display: "block",
                     transition: "color 0.2s",
                   }}
-                  onMouseEnter={(e) => (e.currentTarget.style.color = "#E2652E")}
-                  onMouseLeave={(e) => (e.currentTarget.style.color = "#1A1A1F")}
+                  onMouseEnter={(e) => (e.currentTarget.style.color = hoverColor)}
+                  onMouseLeave={(e) => (e.currentTarget.style.color = textColor)}
                 >
                   {link.label}
                 </Link>

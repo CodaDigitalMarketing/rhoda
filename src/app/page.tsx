@@ -21,29 +21,71 @@ export default function Home() {
       <Navbar />
 
       <main>
-        {/* ── Hero ── */}
-        <section style={{ background: "#FAFAFA", borderRadius: 12, margin: "0 8px" }}>
-          <div className="rhoda-container text-center" style={{ paddingTop: 200, paddingBottom: 0 }}>
+        {/* ── Hero with video background ── */}
+        <section
+          style={{
+            position: "relative",
+            overflow: "hidden",
+            minHeight: "100vh",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          {/* Background video */}
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            poster="/assets/video/rhoda-hero-poster.jpg"
+            style={{
+              position: "absolute",
+              inset: 0,
+              width: "100%",
+              height: "100%",
+              objectFit: "cover",
+              zIndex: 0,
+            }}
+          >
+            <source src="/assets/video/rhoda-hero.mp4" type="video/mp4" />
+          </video>
+
+          {/* Dark overlay for text readability */}
+          <div
+            style={{
+              position: "absolute",
+              inset: 0,
+              background: "linear-gradient(180deg, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.82) 50%, rgba(0,0,0,0.9) 100%)",
+              zIndex: 1,
+            }}
+          />
+
+          {/* Content */}
+          <div
+            className="rhoda-container text-center"
+            style={{ position: "relative", zIndex: 2, paddingTop: 180, paddingBottom: 120 }}
+          >
             <FadeIn>
-              <p style={{ color: "#C45230", fontSize: 12, fontWeight: 600, letterSpacing: "0.2em", textTransform: "uppercase", marginBottom: 32 }}>
+              <p style={{ color: "#F07A45", fontSize: 12, fontWeight: 600, letterSpacing: "0.2em", textTransform: "uppercase", marginBottom: 32 }}>
                 RHODA AI
               </p>
             </FadeIn>
 
             <FadeIn delay={1}>
-              <h1 style={{ color: "#1A1A1F", fontSize: "clamp(40px, 5vw, 72px)", fontWeight: 400, lineHeight: 1.1, marginBottom: 20 }}>
+              <h1 style={{ color: "#FFFFFF", fontSize: "clamp(40px, 5vw, 72px)", fontWeight: 400, lineHeight: 1.1, marginBottom: 20 }}>
                 Redefining Robotic Intelligence
               </h1>
             </FadeIn>
 
             <FadeIn delay={2}>
-              <p style={{ color: "#6B6B74", fontSize: 18, marginBottom: 32 }}>
+              <p style={{ color: "rgba(255,255,255,0.7)", fontSize: 18, marginBottom: 32 }}>
                 Designing intelligence for the real world
               </p>
             </FadeIn>
 
             <FadeIn delay={3}>
-              <p className="mx-auto" style={{ color: "#6B6B74", maxWidth: 600, lineHeight: 1.7, fontSize: 16, marginBottom: 40 }}>
+              <p className="mx-auto" style={{ color: "rgba(255,255,255,0.6)", maxWidth: 600, lineHeight: 1.7, fontSize: 16, marginBottom: 48 }}>
                 Our team focuses on deploying robotic systems into the real
                 world. We build general purpose foundation models that can
                 adapt to the variability of commercial and industrial
@@ -52,25 +94,51 @@ export default function Home() {
             </FadeIn>
 
             <FadeIn delay={4}>
-              <div style={{ display: "flex", gap: 16, justifyContent: "center", flexWrap: "wrap", marginBottom: 64 }}>
+              <div style={{ display: "flex", gap: 16, justifyContent: "center", flexWrap: "wrap" }}>
                 <Link href="/research/direct-video-action" className="btn-primary">
                   View Research <span aria-hidden="true">&rarr;</span>
                 </Link>
-                <Link href="/contact" className="btn-outline">
+                <Link
+                  href="/contact"
+                  style={{
+                    display: "inline-flex",
+                    alignItems: "center",
+                    gap: 10,
+                    border: "1.5px solid rgba(255,255,255,0.3)",
+                    padding: "14px 36px",
+                    color: "white",
+                    fontSize: 15,
+                    fontWeight: 500,
+                    letterSpacing: "0.02em",
+                    borderRadius: 6,
+                    textDecoration: "none",
+                    transition: "all 0.2s ease",
+                    background: "rgba(255,255,255,0.08)",
+                  }}
+                  onMouseEnter={(e) => { e.currentTarget.style.background = "rgba(255,255,255,0.15)"; e.currentTarget.style.borderColor = "rgba(255,255,255,0.5)"; }}
+                  onMouseLeave={(e) => { e.currentTarget.style.background = "rgba(255,255,255,0.08)"; e.currentTarget.style.borderColor = "rgba(255,255,255,0.3)"; }}
+                >
                   Schedule Consultation
                 </Link>
               </div>
             </FadeIn>
+          </div>
 
-            <FadeIn delay={5}>
-              <div style={{ padding: "0 24px 80px" }}>
-                <div style={{ position: "relative", width: "100%", aspectRatio: "16 / 9", overflow: "hidden", borderRadius: 12 }}>
-                  <video autoPlay muted loop playsInline poster="/assets/video/rhoda-hero-poster.jpg" className="absolute inset-0 w-full h-full object-cover">
-                    <source src="/assets/video/rhoda-hero.mp4" type="video/mp4" />
-                  </video>
-                </div>
-              </div>
-            </FadeIn>
+          {/* Scroll indicator */}
+          <div
+            style={{
+              position: "absolute",
+              bottom: 32,
+              left: "50%",
+              transform: "translateX(-50%)",
+              zIndex: 2,
+              animation: "bounce 2s ease infinite",
+              opacity: 0.6,
+            }}
+          >
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <polyline points="6 9 12 15 18 9" />
+            </svg>
           </div>
         </section>
 
