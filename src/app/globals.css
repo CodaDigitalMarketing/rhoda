@@ -46,9 +46,9 @@
     --footer-text: #E2E0DB;
     --footer-muted: #6A6A72;
     --footer-border: #2A2A30;
-    --nav-bg: rgba(14, 14, 17, 0.92);
-    --nav-border: rgba(255, 255, 255, 0.06);
-    --nav-shadow: 0 2px 16px rgba(0, 0, 0, 0.3);
+    --nav-bg: rgba(30, 30, 36, 0.8);
+    --nav-border: rgba(255, 255, 255, 0.12);
+    --nav-shadow: 0 4px 24px rgba(232, 120, 64, 0.1), 0 2px 12px rgba(0, 0, 0, 0.3);
     --nav-text: #E2E0DB;
     --nav-hero-bg: rgba(255, 255, 255, 0.04);
     --nav-hero-border: rgba(255, 255, 255, 0.08);
