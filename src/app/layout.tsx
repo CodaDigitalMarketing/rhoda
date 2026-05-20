@@ -30,10 +30,12 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{
             __html: `
               try {
-                if (localStorage.getItem('rhoda-theme') === 'dark') {
+                if (localStorage.getItem('rhoda-theme') !== 'light') {
                   document.documentElement.classList.add('dark');
                 }
-              } catch(e) {}
+              } catch(e) {
+                document.documentElement.classList.add('dark');
+              }
             `,
           }}
         />

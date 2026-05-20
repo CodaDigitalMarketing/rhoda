@@ -14,13 +14,15 @@ export function useTheme() {
 }
 
 export default function ThemeProvider({ children }: { children: ReactNode }) {
-  const [theme, setTheme] = useState<Theme>("light");
+  const [theme, setTheme] = useState<Theme>("dark");
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     const saved = localStorage.getItem("rhoda-theme") as Theme | null;
-    if (saved === "dark") {
-      setTheme("dark");
+    if (saved === "light") {
+      setTheme("light");
+      document.documentElement.classList.remove("dark");
+    } else {
       document.documentElement.classList.add("dark");
     }
     setMounted(true);
